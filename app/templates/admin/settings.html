@@ -1,0 +1,46 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
+    <h1>Paramètres du Site</h1>
+</div>
+
+<div class="glass-panel">
+    <form method="POST" action="{{ url_for('admin.settings') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3);">
+            <div class="form-group">
+                <label class="form-label" for="site_title">Titre du Site</label>
+                <input type="text" id="site_title" name="site_title" class="form-control" value="{{ settings.get('site_title', '') }}">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="site_description">Description (SEO)</label>
+                <input type="text" id="site_description" name="site_description" class="form-control" value="{{ settings.get('site_description', '') }}">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="contact_phone">Téléphone de contact</label>
+                <input type="text" id="contact_phone" name="contact_phone" class="form-control" value="{{ settings.get('contact_phone', '') }}">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="contact_email">Email de contact</label>
+                <input type="email" id="contact_email" name="contact_email" class="form-control" value="{{ settings.get('contact_email', '') }}">
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+                <label class="form-label" for="contact_address">Adresse</label>
+                <input type="text" id="contact_address" name="contact_address" class="form-control" value="{{ settings.get('contact_address', '') }}">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="hero_title">Titre Hero (Accueil)</label>
+                <input type="text" id="hero_title" name="hero_title" class="form-control" value="{{ settings.get('hero_title', '') }}">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="hero_subtitle">Sous-titre Hero (Accueil)</label>
+                <input type="text" id="hero_subtitle" name="hero_subtitle" class="form-control" value="{{ settings.get('hero_subtitle', '') }}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: var(--spacing-3);">Enregistrer les modifications</button>
+    </form>
+</div>
+{% endblock %}

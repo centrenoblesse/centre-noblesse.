@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Centre Noblesse School — Formation professionnelle d'excellence en Langues, Informatique, Intelligence Artificielle, Kids Program et plus. Algérie.">
+  <title>{{ settings.get('site_title', 'Centre Noblesse School') }} — Accueil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────── */
+    :root {
+      --red: #D1000E;
+      --red-dark: #a8000b;
+      --red-glow: rgba(209, 0, 14, 0.22);
+      --blue: #66C0FF;
+      --blue-dark: #3aabf5;
+      --blue-glow: rgba(102, 192, 255, 0.18);
+      --white: #FFFFFF;
+      --dark: #080C12;
+      --dark-2: #0F1520;
+      --dark-3: #171F2E;
+      --dark-4: #1E2A3B;
+      --light: #F4F7FB;
+      --light-2: #EBF0F8;
+      --text: #0F1520;
+      --text-2: #3D4F68;
+      --muted: #7A8EA8;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-l: rgba(0, 0, 0, 0.07);
+      --sh-sm: 0 4px 20px rgba(0, 0, 0, 0.09);
+      --sh-md: 0 12px 40px rgba(0, 0, 0, 0.14);
+      --sh-lg: 0 24px 64px rgba(0, 0, 0, 0.20);
+      --sh-red: 0 8px 32px rgba(209, 0, 14, 0.32);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur: 260ms;
+      --nav-h: 76px;
+      --max-w: 1380px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .85rem 1.8rem;
+      border-radius: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      transition: transform 180ms var(--spring), box-shadow var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, var(--red) 0%, #b5000c 100%);
+      color: var(--white);
+      box-shadow: 0 4px 18px var(--red-glow);
+    }
+
+    .btn-red:hover {
+      box-shadow: var(--sh-red);
+    }
+
+    .btn-blue {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: var(--dark);
+      box-shadow: 0 4px 18px var(--blue-glow);
+    }
+
+    .btn-ghost {
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .btn-outline-dark {
+      border: 2px solid var(--border-l);
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-outline-dark:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* ─── REVEAL ANIMATION ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: .4s;
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────────────── */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+
+    .site-header.scrolled {
+      background: rgba(8, 12, 18, .95);
+      backdrop-filter: blur(20px) saturate(180%);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--red) 0%, #8B0008 100%);
+      border-radius: 9px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 14px var(--red-glow);
+    }
+
+    .logo-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .logo-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .logo-sub {
+      font-size: .65rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    @media(min-width:960px) {
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    .nav-link {
+      padding: 8px 13px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: rgba(240, 244, 250, .72);
+      border-radius: 8px;
+      transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--white);
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hamburger {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .08);
+      color: var(--white);
+    }
+
+    @media(min-width:960px) {
+      .hamburger {
+        display: none;
+      }
+    }
+
+    /* Mobile Drawer */
+    .mob-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 590;
+      background: rgba(8, 12, 18, .75);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur) var(--ease);
+    }
+
+    .mob-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mob-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(340px, 100vw);
+      height: 100%;
+      z-index: 600;
+      background: var(--dark-2);
+      border-left: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      transform: translateX(110%);
+      transition: transform .45s var(--ease);
+      overflow-y: auto;
+    }
+
+    .mob-drawer.open {
+      transform: translateX(0);
+    }
+
+    .mob-drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.25rem;
+      margin-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mob-close {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .08);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+    }
+
+    .mob-link {
+      display: block;
+      padding: 13px 14px;
+      font-size: .95rem;
+      font-weight: 600;
+      color: rgba(240, 244, 250, .8);
+      border-radius: 8px;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+
+    .mob-link:hover {
+      background: rgba(255, 255, 255, .08);
+      color: var(--white);
+    }
+
+    .mob-footer {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: var(--nav-h);
+      overflow: hidden;
+      color: var(--white);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+    }
+
+    /* Multi-layer overlay for deep contrast + brand */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+          rgba(8, 12, 18, .62) 0%,
+          rgba(8, 12, 18, .74) 50%,
+          rgba(8, 12, 18, .92) 100%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 30%, rgba(209, 0, 14, .18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 20% 70%, rgba(102, 192, 255, .14) 0%, transparent 70%);
+    }
+
+    /* Animated scan line / grid texture */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 860px;
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 10vw, 7rem);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 16px 5px 10px;
+      background: rgba(102, 192, 255, .12);
+      border: 1px solid rgba(102, 192, 255, .25);
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .8s var(--ease) both;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--blue);
+      border-radius: 50%;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(.8)
+      }
+    }
+
+    .hero-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 6.2rem);
+      font-weight: 900;
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .8s var(--ease) .12s both;
+    }
+
+    .hero-name .line {
+      display: block;
+    }
+
+    .hero-name .accent {
+      background: linear-gradient(90deg, var(--red) 0%, #FF5560 60%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(240, 244, 250, .7);
+      line-height: 1.75;
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      animation: fadeUp .8s var(--ease) .24s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      animation: fadeUp .8s var(--ease) .35s both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      animation: fadeUp .9s var(--ease) 1s both;
+    }
+
+    .scroll-wheel {
+      width: 22px;
+      height: 36px;
+      border: 2px solid rgba(255, 255, 255, .22);
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+    }
+
+    .scroll-dot {
+      width: 4px;
+      height: 8px;
+      background: var(--blue);
+      border-radius: 2px;
+      animation: scrollDot 2.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+
+      0%,
+      100% {
+        transform: translateY(-4px);
+        opacity: 1
+      }
+
+      50% {
+        transform: translateY(4px);
+        opacity: .35
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* ─── VALUE STRIPS ───────────────────────────────────── */
+    .value-strip {
+      background: var(--dark-3);
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .strip-track {
+      display: flex;
+      gap: 0;
+      animation: stripScroll 25s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    @keyframes stripScroll {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .strip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      padding: .2rem 2rem;
+      font-size: .82rem;
+      font-weight: 700;
+      color: rgba(240, 244, 250, .6);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .strip-dot {
+      color: var(--red);
+      font-size: .55rem;
+    }
+
+    /* ─── INTRO / ABOUT ──────────────────────────────────── */
+    .about-section {
+      background: var(--white);
+      padding: clamp(5rem, 10vw, 8rem) 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    @media(min-width:900px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+    }
+
+    .section-eyebrow--blue {
+      color: var(--blue-dark);
+    }
+
+    .section-h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.85rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-h2--white {
+      color: var(--white);
+    }
+
+    .section-lead {
+      font-size: clamp(.95rem, 1.6vw, 1.1rem);
+      color: var(--text-2);
+      line-height: 1.78;
+    }
+
+    .section-lead--muted {
+      color: rgba(240, 244, 250, .65);
+    }
+
+    .about-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--light);
+      border-radius: 12px;
+      border: 1px solid var(--border-l);
+      transition: transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease);
+      transform-style: preserve-3d;
+    }
+
+    .pillar:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sh-sm);
+    }
+
+    .pillar-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .pillar-icon--red {
+      background: rgba(209, 0, 14, .1);
+    }
+
+    .pillar-icon--blue {
+      background: rgba(102, 192, 255, .12);
+    }
+
+    .pillar-icon--gold {
+      background: rgba(217, 119, 6, .1);
+    }
+
+    .pillar-icon--green {
+      background: rgba(22, 163, 74, .1);
+    }
+
+    .pillar-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: .95rem;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .pillar-desc {
+      font-size: .83rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* About visual */
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 72px rgba(0, 0, 0, .14);
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+    }
+
+    .about-img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -16px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: var(--sh-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Outfit', sans-serif;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .about-badge-icon {
+      font-size: 1.8rem;
+    }
+
+    .about-badge-val {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .about-badge-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ─── STATS SECTION ──────────────────────────────────── */
+    .stats-section {
+      background: linear-gradient(135deg, var(--dark) 0%, #0D1730 60%, var(--dark) 100%);
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-bg-red {
+      position: absolute;
+      left: -10%;
+      top: -20%;
+      width: 50%;
+      height: 140%;
+      background: radial-gradient(ellipse at left center, rgba(209, 0, 14, .16) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .stats-bg-blue {
+      position: absolute;
+      right: -10%;
+      bottom: -20%;
+      width: 50%;
+      height: 140%;
+      background: radial-gradient(ellipse at right center, rgba(102, 192, 255, .12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .stats-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: transform var(--dur) var(--spring), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--dur) var(--ease);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(102, 192, 255, .2);
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .stat-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .stat-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .stat-num .suffix {
+      font-size: .6em;
+      color: var(--red);
+    }
+
+    .stat-label {
+      font-size: .9rem;
+      color: rgba(240, 244, 250, .6);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ─── COURSES GATEWAY ────────────────────────────────── */
+    .gateway-section {
+      background: var(--light);
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      overflow: hidden;
+    }
+
+    .gateway-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media(min-width:900px) {
+      .gateway-inner {
+        grid-template-columns: 1.1fr 1fr;
+      }
+    }
+
+    .gateway-text .section-lead {
+      max-width: 520px;
+    }
+
+    .gateway-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      margin-top: 1.5rem;
+    }
+
+    .category-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--white);
+      border: 1px solid var(--border-l);
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text-2);
+      transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), transform 150ms var(--spring);
+    }
+
+    .category-chip:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .gateway-cta {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Animated Explore Button */
+    .btn-explore {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 2.2rem;
+      background: linear-gradient(135deg, var(--red) 0%, #b5000c 100%);
+      color: var(--white);
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      box-shadow: var(--sh-red);
+      position: relative;
+      overflow: hidden;
+      transition: transform 180ms var(--spring), box-shadow var(--dur) var(--ease);
+    }
+
+    .btn-explore:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(209, 0, 14, .4);
+    }
+
+    .btn-explore::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .12) 0%, transparent 60%);
+    }
+
+    .btn-explore .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 6px;
+      transition: transform 180ms var(--spring);
+    }
+
+    .btn-explore:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* Gateway visual — mini category preview */
+    .gateway-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .85rem;
+    }
+
+    .gw-card {
+      background: var(--white);
+      border: 1px solid var(--border-l);
+      border-radius: 16px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      box-shadow: var(--sh-sm);
+      transition: transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    }
+
+    .gw-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-md);
+      border-color: rgba(209, 0, 14, .15);
+    }
+
+    .gw-icon {
+      font-size: 1.8rem;
+      margin-bottom: .6rem;
+    }
+
+    .gw-name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: .88rem;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .gw-count {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    /* ─── PACKS SECTION ──────────────────────────────────── */
+    .packs-section {
+      background: var(--dark-2);
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .packs-section-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 60% at 15% 50%, rgba(209, 0, 14, .1) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 85% 50%, rgba(102, 192, 255, .08) 0%, transparent 70%);
+    }
+
+    .packs-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .packs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pack-card {
+      position: relative;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 22px;
+      padding: 2rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      transform-style: preserve-3d;
+      cursor: default;
+    }
+
+    .pack-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, .03) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .pack-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 28px 72px rgba(0, 0, 0, .3);
+    }
+
+    .pack-card--featured {
+      border-color: rgba(209, 0, 14, .3);
+    }
+
+    .pack-card--featured:hover {
+      box-shadow: 0 28px 72px rgba(209, 0, 14, .2);
+    }
+
+    .pack-card--blue {
+      border-color: rgba(102, 192, 255, .2);
+    }
+
+    .pack-card--blue:hover {
+      box-shadow: 0 28px 72px rgba(102, 192, 255, .15);
+    }
+
+    .pack-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      top: -40px;
+      right: -40px;
+    }
+
+    .pack-glow--red {
+      background: rgba(209, 0, 14, .25);
+    }
+
+    .pack-glow--blue {
+      background: rgba(102, 192, 255, .2);
+    }
+
+    .pack-glow--gold {
+      background: rgba(217, 119, 6, .2);
+      top: auto;
+      bottom: -40px;
+      left: -40px;
+      right: auto;
+    }
+
+    .pack-glow--green {
+      background: rgba(22, 163, 74, .2);
+      top: auto;
+      bottom: -40px;
+      left: -40px;
+      right: auto;
+    }
+
+    .pack-top {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pack-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .9rem;
+    }
+
+    .pack-badge--red {
+      background: rgba(209, 0, 14, .18);
+      color: #FF5560;
+      border: 1px solid rgba(209, 0, 14, .3);
+    }
+
+    .pack-badge--blue {
+      background: rgba(102, 192, 255, .14);
+      color: var(--blue);
+      border: 1px solid rgba(102, 192, 255, .25);
+    }
+
+    .pack-badge--gold {
+      background: rgba(217, 119, 6, .12);
+      color: #F59E0B;
+      border: 1px solid rgba(217, 119, 6, .25);
+    }
+
+    .pack-badge--kids {
+      background: rgba(139, 92, 246, .12);
+      color: #A78BFA;
+      border: 1px solid rgba(139, 92, 246, .25);
+    }
+
+    .pack-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: .4rem;
+      line-height: 1.25;
+    }
+
+    .pack-desc {
+      font-size: .85rem;
+      color: rgba(240, 244, 250, .55);
+      line-height: 1.6;
+    }
+
+    .pack-includes {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pack-include-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .82rem;
+      color: rgba(240, 244, 250, .6);
+    }
+
+    .pack-include-item::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 800;
+      font-size: .8rem;
+    }
+
+    .pack-price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: .75rem;
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+
+    .pack-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .pack-price-orig {
+      font-size: .82rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-top: 3px;
+    }
+
+    .pack-price-save {
+      font-size: .72rem;
+      color: var(--blue);
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* CTA inside pack */
+    .btn-pack {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .65rem 1.2rem;
+      border-radius: 9px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .83rem;
+      background: rgba(209, 0, 14, .18);
+      color: #FF6070;
+      border: 1px solid rgba(209, 0, 14, .3);
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform 140ms var(--spring);
+      flex-shrink: 0;
+    }
+
+    .btn-pack:hover {
+      background: var(--red);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-pack--blue {
+      background: rgba(102, 192, 255, .12);
+      color: var(--blue);
+      border-color: rgba(102, 192, 255, .25);
+    }
+
+    .btn-pack--blue:hover {
+      background: var(--blue-dark);
+      color: var(--dark);
+    }
+
+    /* ─── CONTACT STRIP ──────────────────────────────────── */
+    .contact-strip {
+      background: var(--dark);
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-strip-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media(min-width:768px) {
+      .contact-strip-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(min-width:1100px) {
+      .contact-strip-inner {
+        grid-template-columns: 1.6fr 1fr 1fr;
+      }
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-block-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: .25rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .88rem;
+      color: rgba(240, 244, 250, .65);
+    }
+
+    .contact-item a {
+      color: inherit;
+      transition: color var(--dur) var(--ease);
+    }
+
+    .contact-item a:hover {
+      color: var(--blue);
+    }
+
+    .c-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--dark-4);
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    .social-row {
+      display: flex;
+      gap: .65rem;
+      margin-top: .5rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      font-size: .82rem;
+      font-weight: 600;
+      color: rgba(240, 244, 250, .7);
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), transform 150ms var(--spring);
+    }
+
+    .social-link:hover {
+      background: rgba(255, 255, 255, .1);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .social-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .site-footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-size: .84rem;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: .84rem;
+      color: var(--muted);
+      transition: color var(--dur) var(--ease);
+    }
+
+    .footer-links a:hover {
+      color: var(--blue);
+    }
+
+    /* ─── BACK TO TOP ────────────────────────────────────── */
+    .back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 22px;
+      z-index: 400;
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: var(--red);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--sh-red);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+
+    .back-top.show {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .back-top:hover {
+      transform: translateY(-3px);
+    }
+
+    /* ─── MODAL ──────────────────────────────────────────── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 700;
+      background: rgba(8, 12, 18, .82);
+      backdrop-filter: blur(7px);
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur) var(--ease);
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: var(--white);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 560px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .28);
+      transform: translateY(28px) scale(.97);
+      transition: transform .45s var(--spring);
+      scrollbar-width: thin;
+    }
+
+    .modal-backdrop.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-head {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-4) 100%);
+      border-radius: 24px 24px 0 0;
+      padding: 1.75rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .modal-head-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(209, 0, 14, .18);
+      border: 1px solid rgba(209, 0, 14, .28);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      margin-bottom: .75rem;
+    }
+
+    .modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .modal-sub {
+      font-size: .88rem;
+      color: rgba(240, 244, 250, .55);
+      margin-top: 3px;
+    }
+
+    .modal-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .1);
+      color: rgba(240, 244, 250, .7);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(209, 0, 14, .25);
+      color: var(--white);
+    }
+
+    .modal-body {
+      padding: 1.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media(min-width:480px) {
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: .84rem;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-label .req {
+      color: var(--red);
+      margin-left: 3px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 11px 15px;
+      border: 2px solid #DDE3EC;
+      border-radius: 9px;
+      font-family: 'Inter', sans-serif;
+      font-size: .93rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      -webkit-appearance: none;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--blue-dark);
+      box-shadow: 0 0 0 4px rgba(102, 192, 255, .18);
+    }
+
+    .form-control.err {
+      border-color: var(--red);
+      background: #FFF5F5;
+    }
+
+    .form-control:disabled {
+      background: var(--light);
+      color: var(--muted);
+      cursor: not-allowed;
+    }
+
+    .form-err-msg {
+      display: none;
+      align-items: center;
+      gap: 5px;
+      color: #DC2626;
+      font-size: .8rem;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+
+    .form-err-msg.show {
+      display: flex;
+    }
+
+    .form-hint {
+      font-size: .77rem;
+      color: var(--muted);
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .form-submit {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: .85rem;
+      flex-wrap: wrap;
+    }
+
+    .form-submit .btn {
+      flex: 1;
+      min-width: 130px;
+      padding: 13px 18px;
+      font-size: .97rem;
+    }
+
+    .form-success-state {
+      display: none;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .form-success-state.show {
+      display: block;
+    }
+
+    .success-circle {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #16A34A 0%, #14532D 100%);
+      display: grid;
+      place-items: center;
+      font-size: 1.9rem;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 8px 30px rgba(22, 163, 74, .3);
+      animation: popIn .5s var(--spring) both;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    .success-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+
+    .success-body {
+      color: var(--muted);
+      font-size: .92rem;
+      max-width: 360px;
+      margin: 0 auto 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════
+     NAVIGATION
+══════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="logo" aria-label="Centre Noblesse School – Accueil">
+          <div class="logo-icon" aria-hidden="true" style="background: transparent; border: none; box-shadow: none;">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Centre Noblesse" style="height: 48px; width: auto; display: block; object-fit: contain;">
+          </div>
+          <div>
+            <div class="logo-name">Centre Noblesse</div>
+            <div class="logo-sub">AHM School</div>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Navigation principale">
+          <a href="index.html" class="nav-link active">Accueil</a>
+          <a href="categories.html" class="nav-link">Nos Cours</a>
+          <a href="#packs" class="nav-link">Nos Packs</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="nav-cta">
+          <button class="btn btn-red" id="nav-register-btn" data-open-modal="register">S'inscrire</button>
+          <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="mob-drawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" aria-hidden="true">
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="mob-overlay" id="mob-overlay"></div>
+  <nav class="mob-drawer" id="mob-drawer" role="dialog" aria-modal="true" aria-label="Menu mobile">
+    <div class="mob-drawer-head">
+      <div class="logo-name" style="color:var(--white)">Centre Noblesse</div>
+      <button class="mob-close" id="mob-close" aria-label="Fermer">&times;</button>
+    </div>
+    <a href="index.html" class="mob-link" data-mob-nav>🏠 Accueil</a>
+    <a href="categories.html" class="mob-link" data-mob-nav>📚 Nos Cours</a>
+    <a href="#packs" class="mob-link" data-mob-nav>⭐ Nos Packs</a>
+    <a href="#contact" class="mob-link" data-mob-nav>📍 Contact</a>
+    <div class="mob-footer">
+      <button class="btn btn-red" data-open-modal="register" data-mob-nav style="justify-content:center">S'inscrire
+        maintenant</button>
+      <button class="btn btn-ghost" data-open-modal="appointment" data-mob-nav
+        style="justify-content:center;border-color:rgba(255,255,255,.25)">Prendre rendez-vous</button>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+    <section class="hero" id="home" aria-labelledby="hero-name">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <div class="eyebrow-dot" aria-hidden="true"></div>
+            École de Formation Professionnelle · Algérie
+          </div>
+          <h1 class="hero-name" id="hero-name">
+            <span class="line">{{ settings.get('hero_title', 'Centre Noblesse School') }}</span>
+          </h1>
+          <p class="hero-desc">
+            {{ settings.get('hero_subtitle', "Un écosystème éducatif d'élite où l'excellence pédagogique rencontre la technologie moderne. Langues, Informatique, Intelligence Artificielle, Marketing et programmes Enfants — façonnons ensemble votre avenir professionnel.") }}
+          </p>
+          <div class="hero-actions">
+            <a href="categories.html" class="btn-explore">
+              Explorer Nos Formations
+              <span class="arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+            </a>
+            <button class="btn btn-ghost" data-open-modal="appointment">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Prendre Rendez-vous
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">
+        <div class="scroll-wheel">
+          <div class="scroll-dot"></div>
+        </div>
+        Défiler
+      </div>
+    </section>
+
+    <!-- Value ticker -->
+    <div class="value-strip" aria-hidden="true">
+      <div class="strip-track">
+        <!-- duplicate for seamless loop -->
+        <span class="strip-item"><span class="strip-dot">●</span> Cours de Langues</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Développement Web</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Intelligence Artificielle</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Kids Program</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Photographie &amp; Vidéo</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Formation de Formateurs</span>
+        <span class="strip-item"><span class="strip-dot">●</span> PNL &amp; Marketing</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cyber Sécurité</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cours de Langues</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Développement Web</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Intelligence Artificielle</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Kids Program</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Photographie &amp; Vidéo</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Formation de Formateurs</span>
+        <span class="strip-item"><span class="strip-dot">●</span> PNL &amp; Marketing</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cyber Sécurité</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+       ABOUT / INTRO
+  ══════════════════════════════════ -->
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <div class="reveal">
+            <p class="section-eyebrow">Notre Mission</p>
+            <h2 class="section-h2" id="about-title">Un Centre de Formation Pensé pour l'Excellence</h2>
+            <p class="section-lead">
+              Centre Noblesse School est un écosystème pédagogique complet qui allie rigueur académique, méthodes
+              modernes et accompagnement personnalisé — pour permettre à chaque apprenant d'atteindre son plein
+              potentiel.
+            </p>
+            <div class="about-pillars">
+              <div class="pillar">
+                <div class="pillar-icon pillar-icon--red">👨‍🏫</div>
+                <div>
+                  <div class="pillar-title">Formateurs Certifiés</div>
+                  <div class="pillar-desc">Experts sectoriels avec des années d'expérience terrain et des certifications
+                    reconnues.</div>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon pillar-icon--blue">🎯</div>
+                <div>
+                  <div class="pillar-title">Groupes Réduits &amp; Suivi Personnalisé</div>
+                  <div class="pillar-desc">Effectifs limités pour un accompagnement de qualité et une progression
+                    rapide.</div>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon pillar-icon--gold">🏆</div>
+                <div>
+                  <div class="pillar-title">Certificats Officiels Remis</div>
+                  <div class="pillar-desc">Un certificat valorisable reconnu est délivré à l'issue de chaque formation
+                    réussie.</div>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon pillar-icon--green">💡</div>
+                <div>
+                  <div class="pillar-title">Programmes Tech-Forward</div>
+                  <div class="pillar-desc">IA, Cybersécurité, Dev Web — cursus conçus pour les métiers du futur.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="about-visual reveal reveal-delay-2">
+            <div class="about-img-wrap">
+              <img src="hero-bg.jpg" alt="Intérieur du Centre Noblesse School — salle de formation moderne"
+                loading="lazy">
+            </div>
+            <div class="about-badge">
+              <div class="about-badge-icon">🎓</div>
+              <div>
+                <div class="about-badge-val">500+</div>
+                <div class="about-badge-label">Apprenants formés</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       STATS PANEL
+  ══════════════════════════════════ -->
+    <section class="stats-section" id="stats" aria-labelledby="stats-title">
+      <div class="stats-bg-red" aria-hidden="true"></div>
+      <div class="stats-bg-blue" aria-hidden="true"></div>
+      <div class="container stats-inner">
+        <div class="stats-header reveal">
+          <p class="section-eyebrow section-eyebrow--blue" style="justify-content:center">Nos Chiffres</p>
+          <h2 class="section-h2 section-h2--white" id="stats-title">L'Excellence en Chiffres</h2>
+          <p class="section-lead section-lead--muted" style="margin:0 auto;text-align:center">Des résultats concrets qui
+            parlent d'eux-mêmes.</p>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card reveal reveal-delay-1">
+            <div class="stat-icon" aria-hidden="true">📚</div>
+            <div class="stat-num">
+              <span class="count-up" data-target="50" data-suffix="+">0</span>
+              <span class="suffix">+</span>
+            </div>
+            <div class="stat-label">Formations &amp; Cours Disponibles</div>
+          </article>
+          <article class="stat-card reveal reveal-delay-2">
+            <div class="stat-icon" aria-hidden="true">🌐</div>
+            <div class="stat-num">
+              <span class="count-up" data-target="7">0</span>
+            </div>
+            <div class="stat-label">Langues Étrangères Enseignées</div>
+          </article>
+          <article class="stat-card reveal reveal-delay-3">
+            <div class="stat-icon" aria-hidden="true">🏆</div>
+            <div class="stat-num">
+              <span class="count-up" data-target="500">0</span>
+              <span class="suffix">+</span>
+            </div>
+            <div class="stat-label">Bénéficiaires Formés avec Succès</div>
+          </article>
+          <article class="stat-card reveal reveal-delay-4">
+            <div class="stat-icon" aria-hidden="true">📜</div>
+            <div class="stat-num">
+              <span class="count-up" data-target="100">0</span>
+              <span class="suffix">%</span>
+            </div>
+            <div class="stat-label">Taux de Satisfaction des Apprenants</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       COURSES GATEWAY
+  ══════════════════════════════════ -->
+    <section class="gateway-section" id="courses" aria-labelledby="gateway-title">
+      <div class="container">
+        <div class="gateway-inner">
+          <div class="gateway-text reveal">
+            <p class="section-eyebrow">Catalogue Complet</p>
+            <h2 class="section-h2" id="gateway-title">Des Formations Pour Chaque Ambition</h2>
+            <p class="section-lead">
+              Du débutant à l'expert — explorez notre catalogue complet de plus de 50 formations réparties en 6 grandes
+              catégories, conçues pour répondre aux besoins du marché d'aujourd'hui et de demain.
+            </p>
+            <div class="gateway-categories">
+              <span class="category-chip">💻 Cours Informatique</span>
+              <span class="category-chip">🎤 Formation de Formateurs</span>
+              <span class="category-chip">🌐 Langues</span>
+              <span class="category-chip">🤖 IA &amp; Cybersécurité</span>
+              <span class="category-chip">🎯 Kids Program</span>
+              <span class="category-chip">🛠️ Formation Divers</span>
+            </div>
+            <div class="gateway-cta">
+              <a href="categories.html" class="btn-explore" id="explore-catalog-btn">
+                Explorer le Catalogue Complet
+                <span class="arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+              </a>
+              <span style="font-size:.85rem;color:var(--muted)">ou</span>
+              <button class="btn btn-outline-dark" data-open-modal="register">S'inscrire directement</button>
+            </div>
+          </div>
+
+          <div class="gateway-visual reveal reveal-delay-2">
+            <div class="gw-card">
+              <div class="gw-icon">💻</div>
+              <div class="gw-name">Informatique</div>
+              <div class="gw-count">12+ formations</div>
+            </div>
+            <div class="gw-card">
+              <div class="gw-icon">🌐</div>
+              <div class="gw-name">Langues</div>
+              <div class="gw-count">7 langues</div>
+            </div>
+            <div class="gw-card">
+              <div class="gw-icon">🎯</div>
+              <div class="gw-name">Kids Program</div>
+              <div class="gw-count">4 activités</div>
+            </div>
+            <div class="gw-card">
+              <div class="gw-icon">🤖</div>
+              <div class="gw-name">IA &amp; CyberSec</div>
+              <div class="gw-count">2 formations</div>
+            </div>
+            <div class="gw-card">
+              <div class="gw-icon">🎤</div>
+              <div class="gw-name">Formateurs</div>
+              <div class="gw-count">4 modules</div>
+            </div>
+            <div class="gw-card"
+              style="background:linear-gradient(135deg,var(--red) 0%,#8B0008 100%);border-color:transparent">
+              <div class="gw-icon">⭐</div>
+              <div class="gw-name" style="color:var(--white)">Voir tout →</div>
+              <div class="gw-count" style="color:rgba(255,255,255,.65)">50+ formations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       PACKS SECTION
+  ══════════════════════════════════ -->
+    <section class="packs-section" id="packs" aria-labelledby="packs-title">
+      <div class="packs-section-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="packs-header reveal">
+          <p class="section-eyebrow section-eyebrow--blue" style="justify-content:center">Offres Spéciales</p>
+          <h2 class="section-h2 section-h2--white" id="packs-title">Nos Packs Complets</h2>
+          <p class="section-lead section-lead--muted" style="margin:0 auto;text-align:center;max-width:580px">
+            Maximisez votre apprentissage avec nos parcours packagés — plus de contenu, moins de prix. Économisez
+            jusqu'à 30%.
+          </p>
+        </div>
+
+        <div class="packs-grid">
+{% for service in services %}
+          <article class="pack-card {% if loop.index == 2 %}pack-card--featured{% elif loop.index == 3 %}pack-card--blue{% endif %} reveal reveal-delay-{{ loop.index }}">
+            <div class="pack-glow {% if loop.index == 2 %}pack-glow--red{% elif loop.index == 3 %}pack-glow--blue{% endif %}" aria-hidden="true"></div>
+            <div class="pack-top">
+              <div class="pack-badge {% if loop.index == 2 %}pack-badge--red{% elif loop.index == 3 %}pack-badge--blue{% endif %}">
+                {% if service.category %}{{ service.category.name }}{% else %}Service{% endif %}
+              </div>
+              <h3 class="pack-name">{{ service.title }}</h3>
+              <p class="pack-desc">{{ service.description }}</p>
+            </div>
+            
+            <div class="pack-price-row">
+              <div>
+                <div class="pack-price">{{ service.price }}</div>
+              </div>
+              <button class="btn-pack {% if loop.index == 3 %}btn-pack--blue{% endif %}" data-open-modal="register" data-course="{{ service.title }}">
+                S'inscrire
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                  <polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+            </div>
+          </article>
+{% else %}
+          <p style="color: white; text-align: center; width: 100%;">Aucun service disponible pour le moment.</p>
+{% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+       CONTACT
+  ══════════════════════════════════ -->
+    <section class="contact-strip" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="reveal" style="margin-bottom:2.5rem">
+          <p class="section-eyebrow section-eyebrow--blue">Contact</p>
+          <h2 class="section-h2 section-h2--white" id="contact-title">Restons en Contact</h2>
+        </div>
+        <div class="contact-strip-inner reveal">
+          <div class="contact-block">
+            <div class="contact-block-title">Coordonnées</div>
+            <div class="contact-item">
+              <div class="c-icon">📞</div>
+              <div>
+                <a href="tel:+213792008534">+213 792 008 534</a><br>
+                <a href="tel:+213553156848">+213 553 156 848</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="c-icon">📍</div>
+              <span>Noblesse School · Algérie</span>
+            </div>
+            <div class="social-row">
+              <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+                Instagram
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  aria-hidden="true">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-title">Prendre Rendez-vous</div>
+            <p style="font-size:.88rem;color:rgba(240,244,250,.6);line-height:1.65">Venez nous rencontrer au centre pour
+              une consultation personnalisée sur votre parcours de formation.</p>
+            <button class="btn btn-red" data-open-modal="appointment"
+              style="margin-top:.5rem;align-self:flex-start">Réserver un créneau</button>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-title">S'inscrire en Ligne</div>
+            <p style="font-size:.88rem;color:rgba(240,244,250,.6);line-height:1.65">Choisissez votre formation et
+              soumettez votre demande en quelques clics. Notre équipe vous contacte sous 24h.</p>
+            <button class="btn btn-blue" data-open-modal="register"
+              style="margin-top:.5rem;align-self:flex-start">Commencer mon inscription</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits réservés.</p>
+        <nav class="footer-links" aria-label="Pied de page">
+          <a href="categories.html">Nos Cours</a>
+          <a href="#packs">Packs</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" id="back-top" aria-label="Retour en haut">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
+
+  <!-- ══════════════════════════════════
+     REGISTER MODAL
+══════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-register" role="dialog" aria-modal="true" aria-labelledby="reg-title"
+    aria-describedby="reg-sub">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <div class="modal-head-icon" aria-hidden="true">📋</div>
+          <h2 class="modal-title" id="reg-title">Inscription à une Formation</h2>
+          <p class="modal-sub" id="reg-sub">Notre équipe vous recontactera sous 24h pour confirmer.</p>
+        </div>
+        <button class="modal-close-btn" data-close-modal="register" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="reg-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="r-name">Nom complet <span class="req">*</span></label>
+              <input class="form-control" type="text" id="r-name" required minlength="2" autocomplete="name"
+                placeholder="Votre nom et prénom" aria-describedby="r-name-e">
+              <span class="form-err-msg" id="r-name-e">Nom complet requis.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="r-phone">Téléphone <span class="req">*</span></label>
+              <input class="form-control" type="tel" id="r-phone" required pattern="[0-9+\s]{9,15}" autocomplete="tel"
+                placeholder="0xxx xx xx xx" aria-describedby="r-phone-e">
+              <span class="form-err-msg" id="r-phone-e">Numéro invalide.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="r-email">Email <span class="req">*</span></label>
+            <input class="form-control" type="email" id="r-email" required autocomplete="email"
+              placeholder="exemple@email.com" aria-describedby="r-email-e">
+            <span class="form-err-msg" id="r-email-e">Email invalide.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="r-course">Formation sélectionnée <span class="req">*</span></label>
+            <select class="form-control" id="r-course" required aria-describedby="r-course-e">
+              <option value="" disabled selected>— Choisissez une formation —</option>
+              <optgroup label="💻 Informatique — Initiation">
+                <option>Introduction à l'Informatique (16h · 6 000 DA)</option>
+                <option>Agent de Saisie (40h · 12 000 DA)</option>
+              </optgroup>
+              <optgroup label="💻 Langages de Programmation">
+                <option>Python (24h · 8 000 DA)</option>
+                <option>Langage C (24h · 8 000 DA)</option>
+                <option>C++ (24h · 8 000 DA)</option>
+                <option>Java (24h · 8 000 DA)</option>
+              </optgroup>
+              <optgroup label="🌐 Développement Web">
+                <option>Design UI/UX (24h · 10 000 DA)</option>
+                <option>Front-End (24h · 15 000 DA)</option>
+                <option>Back-End (24h · 15 000 DA)</option>
+                <option>Base de Données (24h · 10 000 DA)</option>
+                <option>Site WordPress (20h · 12 000 DA)</option>
+                <option>⭐ Pack Complet Dev Web (100h · 50 000 DA)</option>
+              </optgroup>
+              <optgroup label="📸 Photographie & Vidéo">
+                <option>Introduction à la Photographie (16h · 6 000 DA)</option>
+                <option>Montage Vidéo (16h · 6 500 DA)</option>
+                <option>Initiation + Stage Photo (72h · 27 000 DA)</option>
+                <option>📸 Pack Complet Photo (80h · 37 000 DA)</option>
+              </optgroup>
+              <optgroup label="🤖 IA & Cybersécurité">
+                <option>Initiation à l'IA (50h · 25 000 DA)</option>
+                <option>Initiation Cybersécurité (50h · 25 000 DA)</option>
+              </optgroup>
+              <optgroup label="🎤 Formation de Formateurs & PNL">
+                <option>Prise de Parole Publique (16h · 9 000 DA)</option>
+                <option>Self Marketing (24h · 12 000 DA)</option>
+                <option>PNL Niveau 1 (24h · 15 000 DA)</option>
+                <option>🎤 Pack Formateurs (60h · 35 000 DA)</option>
+              </optgroup>
+              <optgroup label="🌐 Langues">
+                <option>Russe (40h · 10 000 DA)</option>
+                <option>Français (40h · 10 000 DA)</option>
+                <option>Espagnol (40h · 10 000 DA)</option>
+                <option>Italien (40h · 10 000 DA)</option>
+                <option>Allemand (40h · 10 000 DA)</option>
+                <option>Anglais (40h · 10 000 DA)</option>
+                <option>Arabe (40h · 10 000 DA)</option>
+              </optgroup>
+              <optgroup label="🎯 Kids Program">
+                <option>Soroban (9 000 DA/niveau)</option>
+                <option>Jeu d'Échecs (3 000 DA/mois)</option>
+                <option>Rubik's Cube (3 000 DA/mois)</option>
+                <option>Robotique (12 000 DA)</option>
+                <option>🎁 Pack Kids Complet (24 000 DA)</option>
+              </optgroup>
+              <optgroup label="🛠️ Formation Divers">
+                <option>Canva (16h · 6 000 DA)</option>
+                <option>R — Statistiques (16h · 4 000 DA)</option>
+                <option>LaTeX (16h · 4 000 DA)</option>
+                <option>Adobe Illustrator (16h · 6 000 DA)</option>
+                <option>Matlab (24h · 4 000 DA)</option>
+                <option>Adobe Photoshop (16h · 6 000 DA)</option>
+              </optgroup>
+            </select>
+            <span class="form-err-msg" id="r-course-e">Veuillez sélectionner une formation.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="r-msg">Message (optionnel)</label>
+            <textarea class="form-control" id="r-msg" rows="3" placeholder="Votre niveau actuel, disponibilités..."
+              style="resize:vertical;min-height:90px"></textarea>
+          </div>
+          <p class="form-hint">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </svg>
+            Un email récapitulatif sera préparé pour notre administration.
+          </p>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-red">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Envoyer la Demande
+            </button>
+            <button type="button" class="btn btn-outline-dark" data-close-modal="register">Annuler</button>
+          </div>
+        </form>
+        <div class="form-success-state" id="reg-success" role="status" aria-live="polite">
+          <div class="success-circle" aria-hidden="true">✓</div>
+          <div class="success-title">Demande Envoyée !</div>
+          <p class="success-body">Votre client email s'ouvre avec le récapitulatif. Si besoin, contactez-nous au <a
+              href="tel:+213792008534" style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
+          <button class="btn btn-red" data-close-modal="register">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+     APPOINTMENT MODAL
+══════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-appointment" role="dialog" aria-modal="true" aria-labelledby="app-title">
+    <div class="modal-box">
+      <div class="modal-head" style="background:linear-gradient(135deg,#0D1730 0%,var(--dark-4) 100%)">
+        <div>
+          <div class="modal-head-icon" style="background:rgba(102,192,255,.15);border-color:rgba(102,192,255,.28)"
+            aria-hidden="true">📅</div>
+          <h2 class="modal-title" id="app-title">Prendre Rendez-vous</h2>
+          <p class="modal-sub">Planifiez une consultation personnalisée avec notre équipe.</p>
+        </div>
+        <button class="modal-close-btn" data-close-modal="appointment" aria-label="Fermer">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="app-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="a-name">Nom complet <span class="req">*</span></label>
+              <input class="form-control" type="text" id="a-name" required minlength="2" autocomplete="name"
+                placeholder="Votre nom" aria-describedby="a-name-e">
+              <span class="form-err-msg" id="a-name-e">Nom requis.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="a-phone">Téléphone <span class="req">*</span></label>
+              <input class="form-control" type="tel" id="a-phone" required pattern="[0-9+\s]{9,15}" autocomplete="tel"
+                placeholder="0xxx xx xx xx" aria-describedby="a-phone-e">
+              <span class="form-err-msg" id="a-phone-e">Numéro invalide.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="a-date">Date souhaitée <span class="req">*</span></label>
+            <input class="form-control" type="date" id="a-date" required aria-describedby="a-date-e">
+            <span class="form-err-msg" id="a-date-e">Veuillez sélectionner une date.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="a-reason">Motif <span class="req">*</span></label>
+            <textarea class="form-control" id="a-reason" rows="4" required placeholder="Raison de la consultation..."
+              style="resize:vertical;min-height:100px" aria-describedby="a-reason-e"></textarea>
+            <span class="form-err-msg" id="a-reason-e">Motif requis.</span>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-blue" style="color:var(--dark)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              Confirmer le Rendez-vous
+            </button>
+            <button type="button" class="btn btn-outline-dark" data-close-modal="appointment">Annuler</button>
+          </div>
+        </form>
+        <div class="form-success-state" id="app-success" role="status" aria-live="polite">
+          <div class="success-circle" aria-hidden="true">📅</div>
+          <div class="success-title">Rendez-vous Demandé !</div>
+          <p class="success-body">Votre client email s'ouvre. Si besoin, appelez le <a href="tel:+213792008534"
+              style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
+          <button class="btn btn-red" data-close-modal="appointment">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════ -->
+  <script>
+    (function () {
+      'use strict';
+      const ADMIN = 'contact@noblesseschool.dz';
+      const $ = (s, c) => (c || document).querySelector(s);
+      const $$ = (s, c) => Array.from((c || document).querySelectorAll(s));
+
+      /* NAV SCROLL */
+      const hdr = $('#site-header');
+      const btt = $('#back-top');
+      function onScroll() {
+        hdr.classList.toggle('scrolled', scrollY > 40);
+        btt.classList.toggle('show', scrollY > 400);
+      }
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* MOBILE MENU */
+      const hburger = $('#hamburger');
+      const drawer = $('#mob-drawer');
+      const overlay = $('#mob-overlay');
+      const mbClose = $('#mob-close');
+      function openMob() { drawer.classList.add('open'); overlay.classList.add('open'); hburger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; mbClose.focus(); }
+      function closeMob() { drawer.classList.remove('open'); overlay.classList.remove('open'); hburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; hburger.focus(); }
+      hburger.addEventListener('click', openMob);
+      mbClose.addEventListener('click', closeMob);
+      overlay.addEventListener('click', closeMob);
+      $$('[data-mob-nav]').forEach(el => el.addEventListener('click', closeMob));
+      drawer.addEventListener('keydown', e => { if (e.key === 'Escape') closeMob(); });
+
+      /* MODALS */
+      let lastFocus = null;
+      function openModal(id, preselect) {
+        const m = $('#modal-' + id);
+        if (!m) return;
+        lastFocus = document.activeElement;
+        m.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        const form = $('form', m), succ = $('.form-success-state', m);
+        if (form) form.style.display = '';
+        if (succ) succ.classList.remove('show');
+        if (preselect && id === 'register') {
+          const sel = $('#r-course');
+          const opt = Array.from(sel.options).find(o => o.value === preselect || o.text.includes(preselect));
+          if (opt) sel.value = opt.value;
+        }
+        if (id === 'appointment') {
+          const d = $('#a-date');
+          const today = new Date().toISOString().split('T')[0];
+          d.setAttribute('min', today);
+          if (!d.value) d.value = today;
+        }
+        const focusable = m.querySelectorAll('button,[href],input,select,textarea');
+        if (focusable[0]) setTimeout(() => focusable[0].focus(), 80);
+      }
+      function closeModal(id) {
+        const m = $('#modal-' + id);
+        if (!m) return;
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+      document.addEventListener('click', e => {
+        const t = e.target.closest('[data-open-modal]');
+        if (!t) return;
+        e.preventDefault();
+        openModal(t.getAttribute('data-open-modal'), t.getAttribute('data-course') || '');
+      });
+      document.addEventListener('click', e => {
+        const t = e.target.closest('[data-close-modal]');
+        if (!t) return;
+        closeModal(t.getAttribute('data-close-modal'));
+      });
+      $$('.modal-backdrop').forEach(b => {
+        b.addEventListener('click', e => { if (e.target === b) closeModal(b.id.replace('modal-', '')); });
+        b.addEventListener('keydown', e => {
+          if (e.key === 'Escape') closeModal(b.id.replace('modal-', ''));
+          if (e.key !== 'Tab') return;
+          const f = Array.from(b.querySelectorAll('button,[href],input,select,textarea'));
+          const first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        });
+      });
+
+      /* FORM VALIDATION */
+      const validateEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      const validatePhone = v => /^[0-9+\s]{9,15}$/.test(v);
+      function validateField(inp) {
+        const v = inp.value.trim(); let ok = true;
+        if (inp.required && !v) ok = false;
+        if (inp.type === 'email' && v && !validateEmail(v)) ok = false;
+        if (inp.type === 'tel' && v && !validatePhone(v)) ok = false;
+        if (inp.minLength > 0 && v.length < inp.minLength) ok = false;
+        inp.classList.toggle('err', !ok);
+        const errEl = document.getElementById(inp.id + '-e');
+        if (errEl) errEl.classList.toggle('show', !ok);
+        return ok;
+      }
+      function setupValidation(form) {
+        $$('input,select,textarea', form).forEach(f => {
+          f.addEventListener('blur', () => validateField(f));
+          f.addEventListener('input', () => { if (f.classList.contains('err')) validateField(f); });
+        });
+      }
+      setupValidation($('#reg-form'));
+      setupValidation($('#app-form'));
+
+      /* REGISTER SUBMIT */
+      $('#reg-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const fields = $$('input[required],select[required],textarea[required]', this);
+        if (!fields.map(validateField).every(Boolean)) { fields.find(f => f.classList.contains('err'))?.focus(); return; }
+
+        const btn = $('button[type="submit"]', this);
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Envoi en cours...';
+        btn.disabled = true;
+
+        const data = { name: $('#r-name').value.trim(), phone: $('#r-phone').value.trim(), email: $('#r-email').value.trim(), course: $('#r-course').value, msg: $('#r-msg').value.trim() };
+
+        try {
+          const res = await fetch('/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) throw new Error('Erreur réseau');
+
+          this.style.display = 'none';
+          const succ = $('#reg-success');
+          succ.querySelector('.success-body').innerHTML = 'Votre demande a été enregistrée avec succès dans notre système. Notre équipe vous contactera très prochainement.';
+          succ.classList.add('show');
+        } catch (error) {
+          alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }
+      });
+
+      /* APPOINTMENT SUBMIT */
+      $('#app-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const fields = $$('input[required],textarea[required]', this);
+        if (!fields.map(validateField).every(Boolean)) { fields.find(f => f.classList.contains('err'))?.focus(); return; }
+
+        const btn = $('button[type="submit"]', this);
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Envoi en cours...';
+        btn.disabled = true;
+
+        const data = { name: $('#a-name').value.trim(), phone: $('#a-phone').value.trim(), date: $('#a-date').value, reason: $('#a-reason').value.trim() };
+
+        try {
+          const res = await fetch('/api/appointment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (!res.ok) throw new Error('Erreur réseau');
+
+          this.style.display = 'none';
+          const succ = $('#app-success');
+          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a été enregistré. Nous vous contacterons pour confirmer l\'horaire exact.';
+          succ.classList.add('show');
+        } catch (error) {
+          alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+        }
+      });
+
+      /* SCROLL REVEAL */
+      const ro = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -70px 0px', threshold: .12 });
+      $$('.reveal').forEach(el => ro.observe(el));
+
+      /* COUNT-UP */
+      const co = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const el = e.target, target = parseInt(el.dataset.target, 10), dur = 1800, start = performance.now();
+          function tick(now) {
+            const p = Math.min((now - start) / dur, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.floor(ease * target);
+            if (p < 1) requestAnimationFrame(tick);
+            else el.textContent = target;
+          }
+          requestAnimationFrame(tick);
+          co.unobserve(el);
+        });
+      }, { threshold: .4 });
+      $$('.count-up').forEach(el => co.observe(el));
+
+      /* BACK TO TOP */
+      btt.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+
+      /* ANTIGRAVITY HOVER */
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced) {
+        $$('.pack-card,.gw-card,.stat-card,.pillar').forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = ((e.clientX - r.left) / r.width - .5) * 12;
+            const y = ((e.clientY - r.top) / r.height - .5) * 12;
+            card.style.transform = `translateY(-8px) rotateX(${-y * .35}deg) rotateY(${x * .35}deg) scale(1.02)`;
+          });
+          card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+        });
+      }
+
+      /* GW CARDS LINK TO CATEGORIES */
+      $$('.gw-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => { window.location.href = 'categories.html'; });
+      });
+
+      /* SMOOTH ANCHOR SCROLL */
+      document.addEventListener('click', e => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a || a.hasAttribute('data-open-modal')) return;
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        e.preventDefault();
+        scrollTo({ top: el.getBoundingClientRect().top + scrollY - 86, behavior: 'smooth' });
+      });
+
+    })();
+  </script>
+</body>
+
+</html>

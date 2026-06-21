@@ -1,0 +1,46 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
+    <h1>Tableau de Bord</h1>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-3); margin-bottom: var(--spacing-4);">
+    <div class="glass-panel">
+        <h3 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: var(--spacing-1);">Total Services</h3>
+        <p style="font-size: 2.5rem; font-weight: 700; font-family: 'Outfit';">{{ services_count }}</p>
+    </div>
+    <div class="glass-panel">
+        <h3 style="color: var(--text-secondary); font-size: 1rem; margin-bottom: var(--spacing-1);">Total Catégories</h3>
+        <p style="font-size: 2.5rem; font-weight: 700; font-family: 'Outfit';">{{ categories_count }}</p>
+    </div>
+</div>
+
+<div class="glass-panel">
+    <h3>Activité Récente</h3>
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Administrateur</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr>
+                    <td>{{ log.timestamp.strftime('%d/%m/%Y %H:%M') }}</td>
+                    <td>{{ log.admin.username }}</td>
+                    <td>{{ log.action }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3" style="text-align: center;">Aucune activité récente.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

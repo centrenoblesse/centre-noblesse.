@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noblesse CMS Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Noblesse CMS</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('admin.dashboard') }}" class="nav-link {% if request.endpoint == 'admin.dashboard' %}active{% endif %}">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </a>
+                <a href="{{ url_for('admin.services') }}" class="nav-link {% if request.endpoint == 'admin.services' %}active{% endif %}">
+                    <i data-lucide="layers"></i> Services
+                </a>
+                <a href="{{ url_for('admin.categories') }}" class="nav-link {% if request.endpoint == 'admin.categories' %}active{% endif %}">
+                    <i data-lucide="folder"></i> Catégories
+                </a>
+                <a href="{{ url_for('admin.settings') }}" class="nav-link {% if request.endpoint == 'admin.settings' %}active{% endif %}">
+                    <i data-lucide="settings"></i> Paramètres
+                </a>
+            </nav>
+            <div style="margin-top: auto;">
+                <a href="{{ url_for('public.index') }}" target="_blank" class="nav-link">
+                    <i data-lucide="external-link"></i> Voir le site
+                </a>
+                <a href="{{ url_for('admin.logout') }}" class="nav-link">
+                    <i data-lucide="log-out"></i> Déconnexion
+                </a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
