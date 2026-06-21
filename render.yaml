@@ -4,7 +4,7 @@ databases:
     user: noblesse_user
     plan: free
 
-webServices:
+services:
   - type: web
     name: noblesse-school
     env: python
