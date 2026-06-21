@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Centre Noblesse School — Formation professionnelle d'excellence en Langues, Informatique, Intelligence Artificielle, Kids Program et plus. Algérie.">
-  <title>{{ settings.get('site_title', 'Centre Noblesse School') }} — Accueil</title>
+  <title>Centre Noblesse School — Accueil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -434,7 +434,7 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      background-image: url("{{ url_for('static', filename='images/hero-bg.jpg') }}");
+      background-image: url('hero-bg.jpg');
       background-size: cover;
       background-position: center 40%;
       background-repeat: no-repeat;
@@ -1773,6 +1773,20 @@
       margin: 0 auto 1.5rem;
     }
   </style>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ╔══════════════════════════════════════════════════════════╗
+    // ║  EMAILJS CONFIG — Replace these 3 values with yours    ║
+    // ║  Get them from https://www.emailjs.com/                ║
+    // ╚══════════════════════════════════════════════════════════╝
+    const EMAILJS_PUBLIC_KEY = '2YkncqeoJe8XrOWjf';
+    const EMAILJS_SERVICE_ID = 'service_qlx3355';
+    const EMAILJS_TEMPLATE_ID = 'template_j4gj88m';
+
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  </script>
 </head>
 
 <body>
@@ -1783,19 +1797,15 @@
   <header class="site-header" id="site-header">
     <div class="container">
       <div class="nav-inner">
-        <a href="index.html" class="logo" aria-label="Centre Noblesse School – Accueil">
-          <div class="logo-icon" aria-hidden="true" style="background: transparent; border: none; box-shadow: none;">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Centre Noblesse" style="height: 48px; width: auto; display: block; object-fit: contain;">
-          </div>
-          <div>
-            <div class="logo-name">Centre Noblesse</div>
-            <div class="logo-sub">AHM School</div>
+        <a href="{{ url_for('public.index') }}" class="logo" aria-label="Centre Noblesse School – Accueil">
+          <div class="logo-icon" aria-hidden="true" style="background: transparent; border: none; box-shadow: none; width: auto; height: auto;">
+            <img src="app/static/images/logo.png" alt="Logo Centre Noblesse AHM" style="height: 64px; width: auto; display: block; object-fit: contain;">
           </div>
         </a>
 
         <nav class="nav-links" aria-label="Navigation principale">
-          <a href="index.html" class="nav-link active">Accueil</a>
-          <a href="categories.html" class="nav-link">Nos Cours</a>
+          <a href="{{ url_for('public.index') }}" class="nav-link active">Accueil</a>
+          <a href="{{ url_for('public.categories') }}" class="nav-link">Nos Cours</a>
           <a href="#packs" class="nav-link">Nos Packs</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
@@ -1821,8 +1831,8 @@
       <div class="logo-name" style="color:var(--white)">Centre Noblesse</div>
       <button class="mob-close" id="mob-close" aria-label="Fermer">&times;</button>
     </div>
-    <a href="index.html" class="mob-link" data-mob-nav>🏠 Accueil</a>
-    <a href="categories.html" class="mob-link" data-mob-nav>📚 Nos Cours</a>
+    <a href="{{ url_for('public.index') }}" class="mob-link" data-mob-nav>🏠 Accueil</a>
+    <a href="{{ url_for('public.categories') }}" class="mob-link" data-mob-nav>📚 Nos Cours</a>
     <a href="#packs" class="mob-link" data-mob-nav>⭐ Nos Packs</a>
     <a href="#contact" class="mob-link" data-mob-nav>📍 Contact</a>
     <div class="mob-footer">
@@ -1848,13 +1858,16 @@
             École de Formation Professionnelle · Algérie
           </div>
           <h1 class="hero-name" id="hero-name">
-            <span class="line">{{ settings.get('hero_title', 'Centre Noblesse School') }}</span>
+            <span class="line">Centre</span>
+            <span class="line accent">Noblesse School</span>
           </h1>
           <p class="hero-desc">
-            {{ settings.get('hero_subtitle', "Un écosystème éducatif d'élite où l'excellence pédagogique rencontre la technologie moderne. Langues, Informatique, Intelligence Artificielle, Marketing et programmes Enfants — façonnons ensemble votre avenir professionnel.") }}
+            Un écosystème éducatif d'élite où l'excellence pédagogique rencontre la technologie moderne. Langues,
+            Informatique, Intelligence Artificielle, Marketing et programmes Enfants — façonnons ensemble votre avenir
+            professionnel.
           </p>
           <div class="hero-actions">
-            <a href="categories.html" class="btn-explore">
+            <a href="{{ url_for('public.categories') }}" class="btn-explore">
               Explorer Nos Formations
               <span class="arrow" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -2044,7 +2057,7 @@
               <span class="category-chip">🛠️ Formation Divers</span>
             </div>
             <div class="gateway-cta">
-              <a href="categories.html" class="btn-explore" id="explore-catalog-btn">
+              <a href="{{ url_for('public.categories') }}" class="btn-explore" id="explore-catalog-btn">
                 Explorer le Catalogue Complet
                 <span class="arrow" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -2231,6 +2244,10 @@
         </div>
 
         <div style="text-align:center;margin-top:3rem;position:relative;z-index:1" class="reveal">
+          <a href="{{ url_for('public.categories') }}" class="btn btn-ghost" style="padding:1rem 2rem;font-size:.95rem">
+            Voir tous nos cours individuels →
+          </a>
+        </div>
       </div>
     </section>
 
@@ -2302,7 +2319,7 @@
       <div class="footer-inner">
         <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits réservés.</p>
         <nav class="footer-links" aria-label="Pied de page">
-          <a href="categories.html">Nos Cours</a>
+          <a href="{{ url_for('public.categories') }}">Nos Cours</a>
           <a href="#packs">Packs</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -2633,7 +2650,7 @@
       setupValidation($('#reg-form'));
       setupValidation($('#app-form'));
 
-      /* REGISTER SUBMIT */
+      /* REGISTER SUBMIT — via EmailJS */
       $('#reg-form').addEventListener('submit', async function (e) {
         e.preventDefault();
         const fields = $$('input[required],select[required],textarea[required]', this);
@@ -2644,28 +2661,32 @@
         btn.innerHTML = 'Envoi en cours...';
         btn.disabled = true;
 
-        const data = { name: $('#r-name').value.trim(), phone: $('#r-phone').value.trim(), email: $('#r-email').value.trim(), course: $('#r-course').value, msg: $('#r-msg').value.trim() };
+        const templateParams = {
+          type: 'Inscription à une Formation',
+          from_name: $('#r-name').value.trim(),
+          phone: $('#r-phone').value.trim(),
+          email: $('#r-email').value.trim(),
+          course: $('#r-course').value,
+          message: $('#r-msg').value.trim() || 'Aucun message',
+          date: new Date().toLocaleDateString('fr-FR')
+        };
 
         try {
-          const res = await fetch('/api/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          if (!res.ok) throw new Error('Erreur réseau');
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
 
           this.style.display = 'none';
           const succ = $('#reg-success');
-          succ.querySelector('.success-body').innerHTML = 'Votre demande a été enregistrée avec succès dans notre système. Notre équipe vous contactera très prochainement.';
+          succ.querySelector('.success-body').innerHTML = 'Votre demande a été envoyée avec succès. Notre équipe vous contactera très prochainement.';
           succ.classList.add('show');
         } catch (error) {
+          console.error('EmailJS error:', error);
           alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
           btn.innerHTML = originalText;
           btn.disabled = false;
         }
       });
 
-      /* APPOINTMENT SUBMIT */
+      /* APPOINTMENT SUBMIT — via EmailJS */
       $('#app-form').addEventListener('submit', async function (e) {
         e.preventDefault();
         const fields = $$('input[required],textarea[required]', this);
@@ -2676,21 +2697,25 @@
         btn.innerHTML = 'Envoi en cours...';
         btn.disabled = true;
 
-        const data = { name: $('#a-name').value.trim(), phone: $('#a-phone').value.trim(), date: $('#a-date').value, reason: $('#a-reason').value.trim() };
+        const templateParams = {
+          type: 'Demande de Rendez-vous',
+          from_name: $('#a-name').value.trim(),
+          phone: $('#a-phone').value.trim(),
+          email: 'N/A',
+          course: 'Rendez-vous le ' + $('#a-date').value,
+          message: $('#a-reason').value.trim(),
+          date: new Date().toLocaleDateString('fr-FR')
+        };
 
         try {
-          const res = await fetch('/api/appointment', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          if (!res.ok) throw new Error('Erreur réseau');
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
 
           this.style.display = 'none';
           const succ = $('#app-success');
-          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a été enregistré. Nous vous contacterons pour confirmer l\'horaire exact.';
+          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a été envoyé. Nous vous contacterons pour confirmer l\'horaire exact.';
           succ.classList.add('show');
         } catch (error) {
+          console.error('EmailJS error:', error);
           alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
           btn.innerHTML = originalText;
           btn.disabled = false;
@@ -2741,7 +2766,7 @@
       /* GW CARDS LINK TO CATEGORIES */
       $$('.gw-card').forEach(card => {
         card.style.cursor = 'pointer';
-        card.addEventListener('click', () => { window.location.href = 'categories.html'; });
+        card.addEventListener('click', () => { window.location.href = "{{ url_for('public.categories') }}"; });
       });
 
       /* SMOOTH ANCHOR SCROLL */
