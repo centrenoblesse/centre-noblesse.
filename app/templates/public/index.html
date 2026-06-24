@@ -437,7 +437,7 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      background-image: url('{{ url_for(' static', filename=' images/hero-bg.jpg') }}');
+      background-image: url('/static/images/hero-bg.jpg');
       background-size: cover;
       background-position: center 40%;
       background-repeat: no-repeat;
@@ -2649,7 +2649,7 @@
       /* GW CARDS LINK TO CATEGORIES */
       $$('.gw-card').forEach(card => {
         card.style.cursor = 'pointer';
-        card.addEventListener('click', () => { window.location.href = '{{ url_for(''public.categories'') }}'; });
+        card.addEventListener('click', () => { window.location.href = '{{ url_for("public.categories") }}'; });
       });
 
       /* SMOOTH ANCHOR SCROLL */
@@ -2681,6 +2681,8 @@
       </div>
       <div class="modal-body">
         <form id="admin-login-form" action="{{ url_for('admin.login') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div id="admin-error" style="display:none; padding: 10px; margin-bottom: 1rem; border-radius: 8px; background: rgba(209, 0, 14, 0.1); color: var(--red); border: 1px solid rgba(209, 0, 14, 0.3); text-align: center; font-size: 0.9rem;"></div>
           <div class="form-group">
             <label class="form-label" for="a-username" style="color:var(--white)">Identifiant <span class="req">*</span></label>
             <input class="form-control" type="text" id="a-username" name="username" required autocomplete="username" placeholder="Director" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">

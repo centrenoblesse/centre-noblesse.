@@ -488,3 +488,29 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   15. ADMIN GATEWAY — error shake + spinner
+   ══════════════════════════════════════════════════════════════════ */
+@keyframes adminShake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px) rotate(-1deg); }
+  30%       { transform: translateX(8px)  rotate(1deg); }
+  45%       { transform: translateX(-6px) rotate(-0.5deg); }
+  60%       { transform: translateX(6px)  rotate(0.5deg); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error div slide-in */
+#admin-error {
+  animation: errSlideIn 0.3s ease forwards;
+}
+@keyframes errSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

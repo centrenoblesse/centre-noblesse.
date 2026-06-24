@@ -670,6 +670,64 @@
         }
       }
     });
+
+    // ── AJAX login intercept — sends FormData so Flask-WTF CSRF validates ──
+    const adminForm = $('#admin-login-form');
+    if (adminForm) {
+      adminForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const errDiv   = $('#admin-error');
+        const btn      = adminForm.querySelector('button[type="submit"]');
+        const origHTML = btn.innerHTML;
+
+        // Hide previous errors, show loading state
+        errDiv.style.display = 'none';
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.5" stroke-linecap="round" style="animation:spin 0.8s linear infinite;vertical-align:middle">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Validation…`;
+        btn.disabled = true;
+
+        // Build FormData (includes csrf_token hidden field automatically)
+        const fd = new FormData(adminForm);
+
+        try {
+          const res  = await fetch(adminForm.action, {
+            method:  'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' },
+            body:    fd
+          });
+
+          let data = {};
+          try { data = await res.json(); } catch(_) {}
+
+          if (res.ok && data.status === 'success') {
+            // ── Success: flash green then redirect ──────────────────
+            btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Accès Autorisé`;
+            btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            btn.style.boxShadow  = '0 0 20px rgba(34,197,94,0.4)';
+            setTimeout(() => { window.location.href = data.redirect; }, 500);
+
+          } else {
+            // ── Failure: show inline message ────────────────────────
+            throw new Error(data.message || 'Identifiants invalides.');
+          }
+
+        } catch (err) {
+          errDiv.textContent    = err.message;
+          errDiv.style.display  = 'block';
+          // Shake animation on the modal box
+          const box = document.querySelector('#modal-admin .modal-box');
+          if (box) {
+            box.style.animation = 'adminShake 0.4s cubic-bezier(.36,.07,.19,.97)';
+            box.addEventListener('animationend', () => { box.style.animation = ''; }, { once: true });
+          }
+          btn.innerHTML = origHTML;
+          btn.disabled  = false;
+        }
+      });
+    }
   }
 
   /* ════════════════════════════════════════════════════════════════

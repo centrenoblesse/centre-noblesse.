@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask import Blueprint, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from app.models import Admin, Category, Service, SiteSetting, ActivityLog, db
 from app import bcrypt
@@ -7,23 +7,32 @@ admin_bp = Blueprint('admin', __name__, url_prefix='/admin')
 
 @admin_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    # Detect AJAX calls from the hidden gateway modal
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
     if current_user.is_authenticated:
+        if is_ajax:
+            return jsonify({"status": "success", "redirect": url_for('admin.dashboard')})
         return redirect(url_for('admin.dashboard'))
-        
+
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
+        username = request.form.get('username', '').strip()
+        password = request.form.get('password', '').strip()
         user = Admin.query.filter_by(username=username).first()
-        
+
         if user and bcrypt.check_password_hash(user.password_hash, password):
             login_user(user)
             log = ActivityLog(admin_id=user.id, action="Logged in")
             db.session.add(log)
             db.session.commit()
+            if is_ajax:
+                return jsonify({"status": "success", "redirect": url_for('admin.dashboard')})
             return redirect(url_for('admin.dashboard'))
         else:
-            flash('Login Unsuccessful. Please check username and password', 'danger')
-            
+            if is_ajax:
+                return jsonify({"status": "error", "message": "Identifiants ou code d'accès invalides."}), 401
+            flash('Identifiants incorrects. Veuillez vérifier votre nom et code d\'accès.', 'danger')
+
     return render_template('admin/login.html')
 
 @admin_bp.route('/logout')
