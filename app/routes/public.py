@@ -10,7 +10,7 @@ def inject_settings():
 
 @public_bp.route('/')
 def index():
-    services = Service.query.filter_by(status='published').order_by(Service.sort_order).limit(6).all()
+    services = Service.query.filter_by(status='published').order_by(Service.sort_order).all()
     categories = Category.query.all()
     return render_template('public/index.html', services=services, categories=categories)
 
