@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Catalogue complet des formations professionnelles de Centre Noblesse School.">
-  <title>Nos Formations — Centre Noblesse School</title>
+  <title>Nos Formations � Centre Noblesse School</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ─── DESIGN TOKENS ─────────────────────────────────── */
+    /* ??? DESIGN TOKENS ??????????????????????????????????? */
     :root {
       --red:       #D1000E;
       --red-dark:  #a8000b;
@@ -41,7 +41,7 @@
       --max-w:  1380px;
     }
 
-    /* ─── RESET ──────────────────────────────────────────── */
+    /* ??? RESET ???????????????????????????????????????????? */
     *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -67,10 +67,10 @@
     ul { list-style:none; }
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
-    /* ─── LAYOUT ─────────────────────────────────────────── */
+    /* ??? LAYOUT ??????????????????????????????????????????? */
     .container { width:100%; max-width:var(--max-w); margin:0 auto; padding:0 clamp(1rem,5vw,3rem); }
 
-    /* ─── BUTTONS ────────────────────────────────────────── */
+    /* ??? BUTTONS ?????????????????????????????????????????? */
     .btn {
       display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
       padding:.85rem 1.8rem; border-radius:10px;
@@ -104,7 +104,7 @@
     }
     .btn-outline-dark:hover { border-color:var(--red); color:var(--red); }
 
-    /* ─── REVEAL ANIMATION ───────────────────────────────── */
+    /* ??? REVEAL ANIMATION ????????????????????????????????? */
     .reveal {
       opacity:0; transform:translateY(36px);
       transition:opacity .6s var(--ease), transform .6s var(--ease);
@@ -114,7 +114,7 @@
     .reveal-delay-2 { transition-delay:.2s; }
     .reveal-delay-3 { transition-delay:.3s; }
 
-    /* ─── NAVIGATION ─────────────────────────────────────── */
+    /* ??? NAVIGATION ??????????????????????????????????????? */
     .site-header {
       position:fixed; top:0; left:0; right:0; z-index:500;
       height:var(--nav-h); display:flex; align-items:center;
@@ -189,7 +189,7 @@
     .mob-link:hover { background:rgba(255,255,255,.08); color:var(--white); }
     .mob-footer { margin-top:auto; padding-top:1.25rem; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:.5rem; }
 
-    /* ─── PAGE HEADER ────────────────────────────────────── */
+    /* ??? PAGE HEADER ?????????????????????????????????????? */
     .page-header {
       padding:clamp(6rem,12vw,9rem) 0 clamp(3rem,6vw,4rem);
       background:linear-gradient(135deg, var(--dark) 0%, #0D1730 100%);
@@ -211,7 +211,7 @@
       font-size:clamp(1rem,2vw,1.15rem); color:rgba(240,244,250,.7); line-height:1.6;
     }
 
-    /* ─── CATEGORIES LAYOUT ──────────────────────────────── */
+    /* ??? CATEGORIES LAYOUT ???????????????????????????????? */
     .catalog-section { padding:clamp(3rem,6vw,5rem) 0; }
     
     /* Category Grid Selector */
@@ -249,15 +249,45 @@
     /* Category Panels */
     .cat-panel {
       display:none; opacity:0;
-      transform:translateY(20px) scale(0.98);
-      transform-origin:top;
+      transform:translateY(30px) scale(0.95);
+      transform-origin:center;
     }
     .cat-panel.active {
       display:block;
-      animation:fadeScale .5s var(--spring) forwards;
+      animation:panelEnter .6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
-    @keyframes fadeScale {
-      to { opacity:1; transform:translateY(0) scale(1); }
+    @keyframes panelEnter {
+      0% { opacity:0; transform:translateY(40px) scale(0.95) rotateX(8deg); }
+      100% { opacity:1; transform:translateY(0) scale(1) rotateX(0deg); }
+    }
+    
+    .cat-panel.active .course-card {
+      opacity: 0;
+      animation: cardEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .cat-panel.active .course-card:nth-child(1) { animation-delay: 0.08s; }
+    .cat-panel.active .course-card:nth-child(2) { animation-delay: 0.16s; }
+    .cat-panel.active .course-card:nth-child(3) { animation-delay: 0.24s; }
+    .cat-panel.active .course-card:nth-child(4) { animation-delay: 0.32s; }
+    .cat-panel.active .course-card:nth-child(5) { animation-delay: 0.40s; }
+    .cat-panel.active .course-card:nth-child(n+6) { animation-delay: 0.48s; }
+
+    @keyframes cardEnter {
+      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cat-panel.active, .cat-panel.active .course-card {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .cat-panel {
+        transform: none !important;
+        transition: none !important;
+      }
+    }
     }
 
     .panel-header {
@@ -320,7 +350,7 @@
     }
     .btn-course:hover { background:var(--red); transform:translateY(-2px); }
 
-    /* ─── MODAL ──────────────────────────────────────────── */
+    /* ??? MODAL ???????????????????????????????????????????? */
     .modal-backdrop {
       position:fixed; inset:0; z-index:700;
       background:rgba(8,12,18,.82); backdrop-filter:blur(7px);
@@ -391,7 +421,7 @@
     @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
     .success-title { font-family:'Outfit',sans-serif; font-size:1.35rem; font-weight:900; color:var(--text); margin-bottom:.5rem; }
 
-    /* ─── FOOTER ─────────────────────────────────────────── */
+    /* ??? FOOTER ??????????????????????????????????????????? */
     .site-footer {
       background:var(--dark); border-top:1px solid var(--border);
       padding:1.5rem 0; margin-top:4rem;
@@ -405,35 +435,31 @@
     .footer-links a { font-size:.84rem; color:var(--muted); transition:color var(--dur) var(--ease); }
     .footer-links a:hover { color:var(--blue); }
   </style>
-
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>
-    const EMAILJS_PUBLIC_KEY = '2YkncqeoJe8XrOWjf';
-    const EMAILJS_SERVICE_ID = 'service_qlx3355';
-    const EMAILJS_TEMPLATE_ID = 'template_j4gj88m';
-  <!-- Premium CDN Fallback for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}?v=4">
 </head>
 <body>
 
-<!-- ══════════════════════════════════
+<!-- ??????????????????????????????????
      NAVIGATION
-══════════════════════════════════ -->
+?????????????????????????????????? -->
 <header class="site-header" id="site-header">
   <div class="container">
     <div class="nav-inner">
-      <a href="{{ url_for('public.index') }}"  class="logo" aria-label="Centre Noblesse School – Accueil">
-        <div class="logo-icon" aria-hidden="true" style="background: transparent; border: none; box-shadow: none; width: auto; height: auto;">
-          <img src="{{ url_for('static', filename='images/logo.png') }}"  alt="Logo Centre Noblesse AHM" style="height: 64px; width: auto; display: block; object-fit: contain;">
+      <a href="{{ url_for('public.index') }}" class="logo" aria-label="Centre Noblesse School � Accueil">
+        <div class="logo-icon" aria-hidden="true" style="background: transparent; border: none; box-shadow: none;">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Centre Noblesse" style="height: 48px; width: auto; display: block; object-fit: contain;">
+          </div>
+        <div>
+          <div class="logo-name">Centre Noblesse</div>
+          <div class="logo-sub">AHM School</div>
         </div>
       </a>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="{{ url_for('public.index') }}"       class="nav-link">Accueil</a>
-        <a href="{{ url_for('public.categories') }}"  class="nav-link active">Nos Cours</a>
-        <a href="index.html#packs" class="nav-link">Nos Packs</a>
-        <a href="index.html#contact" class="nav-link">Contact</a>
+        <a href="{{ url_for('public.index') }}" class="nav-link">Accueil</a>
+        <a href="{{ url_for('public.categories') }}" class="nav-link active">Nos Cours</a>
+        <a href="{{ url_for('public.index') }}#packs" class="nav-link">Nos Packs</a>
+        <a href="{{ url_for('public.index') }}#contact" class="nav-link">Contact</a>
       </nav>
 
       <div class="nav-cta">
@@ -452,326 +478,82 @@
     <div class="logo-name" style="color:var(--white)">Centre Noblesse</div>
     <button class="mob-close" id="mob-close" aria-label="Fermer">&times;</button>
   </div>
-  <a href="{{ url_for('public.index') }}"       class="mob-link" data-mob-nav>🏠 Accueil</a>
-  <a href="{{ url_for('public.categories') }}"  class="mob-link" data-mob-nav>📚 Nos Cours</a>
-  <a href="index.html#packs" class="mob-link" data-mob-nav>⭐ Nos Packs</a>
-  <a href="index.html#contact" class="mob-link" data-mob-nav>📍 Contact</a>
+  <a href="{{ url_for('public.index') }}" class="mob-link" data-mob-nav>? Accueil</a>
+  <a href="{{ url_for('public.categories') }}" class="mob-link" data-mob-nav>? Nos Cours</a>
+  <a href="{{ url_for('public.index') }}#packs" class="mob-link" data-mob-nav>? Nos Packs</a>
+  <a href="{{ url_for('public.index') }}#contact" class="mob-link" data-mob-nav>? Contact</a>
   <div class="mob-footer">
     <button class="btn btn-red" data-open-modal="register" data-mob-nav style="justify-content:center">S'inscrire maintenant</button>
   </div>
 </nav>
 
 <main id="main">
-  <!-- ══════════════════════════════════
+  <!-- ??????????????????????????????????
        HEADER
-  ══════════════════════════════════ -->
+  ?????????????????????????????????? -->
   <header class="page-header">
     <div class="container page-header-inner reveal">
       <h1 class="ph-title">Catalogue de Formations</h1>
-      <p class="ph-desc">Parcourez nos catégories et trouvez la formation idéale pour propulser votre carrière ou développer de nouvelles compétences.</p>
+      <p class="ph-desc">Parcourez nos cat�gories et trouvez la formation id�ale pour propulser votre carri�re ou d�velopper de nouvelles comp�tences.</p>
     </div>
   </header>
 
-  <!-- ══════════════════════════════════
+  <!-- ??????????????????????????????????
        CATEGORIES CATALOG
-  ══════════════════════════════════ -->
+  ?????????????????????????????????? -->
   <section class="catalog-section container">
     
     <!-- CATEGORY TABS -->
-    <div class="cat-selector reveal reveal-delay-1" role="tablist" aria-label="Catégories de formations">
+    <div class="cat-selector reveal reveal-delay-1" role="tablist" aria-label="Cat�gories de formations">
 {% for category in categories %}
       <button class="cat-btn {% if loop.first %}active{% endif %}" role="tab" aria-selected="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="cat-{{ category.id }}" id="tab-{{ category.id }}" data-target="cat-{{ category.id }}">
-        <div class="cat-btn-icon" aria-hidden="true">{{ ['💻','🎤','📈','🌐','🎯','🛠️'][loop.index0 % 6] }}</div>
+        <div class="cat-btn-icon" aria-hidden="true">?</div>
         <div class="cat-btn-title">{{ category.name }}</div>
       </button>
 {% endfor %}
-</div>
+    </div>
 
     <!-- PANELS -->
-    
-    <!-- INFORMATIQUE -->
-    <div class="cat-panel active" id="cat-informatique" role="tabpanel" aria-labelledby="tab-informatique">
+{% for category in categories %}
+    <div class="cat-panel {% if loop.first %}active{% endif %}" id="cat-{{ category.id }}" role="tabpanel" aria-labelledby="tab-{{ category.id }}">
       <div class="panel-header">
-        <div class="panel-icon">💻</div>
-        <h2 class="panel-title">Cours Informatique</h2>
+        <div class="panel-icon">?</div>
+        <h2 class="panel-title">{{ category.name }}</h2>
       </div>
       <div class="courses-grid">
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--blue">Initiation</div>
-          <h3 class="cc-title">Introduction à l'Informatique</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">16h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">6 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Introduction à l'Informatique (16h - 6000 DA)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--blue">Bureautique</div>
-          <h3 class="cc-title">Agent de Saisie</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">40h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">12 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Agent de Saisie (40h - 12000 DA)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Développement</div>
-          <h3 class="cc-title">Python</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">8 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Python (24h - 8000 DA)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Développement</div>
-          <h3 class="cc-title">Langage C / C++ / Java</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h / module</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">8 000 DA / mod.</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Langage C/C++/Java (24h)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Web Design</div>
-          <h3 class="cc-title">Design UI/UX</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">10 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Design UI/UX (24h - 10000 DA)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Développement Web</div>
-          <h3 class="cc-title">Front-End (HTML/CSS/JS)</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">15 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Front-End (24h - 15000 DA)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Développement Web</div>
-          <h3 class="cc-title">Back-End &amp; Base de Données</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">48h (Total)</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">25 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Back-End & DB (48h)">S'inscrire</button>
-          </div>
-        </article>
-        <!-- Item -->
-        <article class="course-card">
-          <div class="cc-badge cc-badge--green">Nouvelles Technologies</div>
-          <h3 class="cc-title">Initiation Cybersécurité / IA</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">50h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">25 000 DA</span></div>
-          </div>
-          <div class="cc-footer">
-            <button class="btn-course" data-open-modal="register" data-course="Initiation Cybersécurité / IA (50h - 25000 DA)">S'inscrire</button>
-          </div>
-        </article>
+        {% for service in services %}
+          {% if service.category_id == category.id %}
+          <article class="course-card cn-bento-card">
+            <div class="cc-badge cc-badge--blue">{{ category.name }}</div>
+            <h3 class="cc-title">{{ service.title }}</h3>
+            <div class="cc-meta">
+              <div class="meta-item"><span>Description</span> <span class="val" style="font-size:0.75rem">{{ service.description[:50] }}...</span></div>
+              <div class="meta-item price"><span>Tarif</span> <span class="val">{{ service.price }}</span></div>
+            </div>
+            <div class="cc-footer">
+              <button class="btn-course" data-open-modal="register" data-course="{{ service.title }}">S'inscrire</button>
+            </div>
+          </article>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
-
-    <!-- TRAINERS -->
-    <div class="cat-panel" id="cat-trainers" role="tabpanel" aria-labelledby="tab-trainers">
-      <div class="panel-header">
-        <div class="panel-icon">🎤</div>
-        <h2 class="panel-title">Training of Trainers &amp; PNL</h2>
-      </div>
-      <div class="courses-grid">
-        <article class="course-card">
-          <div class="cc-badge cc-badge--blue">Soft Skills</div>
-          <h3 class="cc-title">Prise de Parole Publique</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">16h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">9 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Prise de Parole Publique (16h - 9000 DA)">S'inscrire</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge cc-badge--blue">Développement Pro</div>
-          <h3 class="cc-title">Self Marketing</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">12 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Self Marketing (24h - 12000 DA)">S'inscrire</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge cc-badge--green">Psychologie</div>
-          <h3 class="cc-title">PNL Niveau 1</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">15 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="PNL Niveau 1 (24h - 15000 DA)">S'inscrire</button></div>
-        </article>
-      </div>
-    </div>
-
-    <!-- MARKETING -->
-    <div class="cat-panel" id="cat-marketing" role="tabpanel" aria-labelledby="tab-marketing">
-      <div class="panel-header">
-        <div class="panel-icon">📱</div>
-        <h2 class="panel-title">Marketing Digital</h2>
-      </div>
-      <div class="courses-grid">
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Digital</div>
-          <h3 class="cc-title">Marketing Digital</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">15 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Marketing Digital (24h - 15000 DA)">S'inscrire</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge cc-badge--blue">Réseaux Sociaux</div>
-          <h3 class="cc-title">Community Management</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">12 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Community Management (24h - 12000 DA)">S'inscrire</button></div>
-        </article>
-      </div>
-    </div>
-
-    <!-- LANGUES -->
-    <div class="cat-panel" id="cat-langues" role="tabpanel" aria-labelledby="tab-langues">
-      <div class="panel-header">
-        <div class="panel-icon">🌐</div>
-        <h2 class="panel-title">Langues</h2>
-      </div>
-      <div class="courses-grid">
-        <!-- Items generated for languages -->
-        <script>
-          const langues = ['Anglais', 'Français', 'Espagnol', 'Italien', 'Allemand', 'Russe', 'Arabe'];
-          document.write(langues.map(lang => `
-            <article class="course-card">
-              <div class="cc-badge cc-badge--blue">Linguistique</div>
-              <h3 class="cc-title">${lang}</h3>
-              <div class="cc-meta">
-                <div class="meta-item"><span>Durée</span> <span class="val">40h / niveau</span></div>
-                <div class="meta-item price"><span>Tarif</span> <span class="val">10 000 DA</span></div>
-              </div>
-              <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="${lang} (40h - 10000 DA)">S'inscrire</button></div>
-            </article>
-          `).join(''));
-        </script>
-      </div>
-    </div>
-
-    <!-- KIDS -->
-    <div class="cat-panel" id="cat-kids" role="tabpanel" aria-labelledby="tab-kids">
-      <div class="panel-header">
-        <div class="panel-icon">🎯</div>
-        <h2 class="panel-title">Kids Program</h2>
-      </div>
-      <div class="courses-grid">
-        <article class="course-card">
-          <div class="cc-badge" style="background:#F3E8FF;color:#7E22CE">Développement Mental</div>
-          <h3 class="cc-title">Soroban (Calcul Mental)</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Format</span> <span class="val">Par niveau</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">9 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Soroban (9000 DA/niveau)">Inscrire mon enfant</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge" style="background:#F3E8FF;color:#7E22CE">Logique & Stratégie</div>
-          <h3 class="cc-title">Jeu d'Échecs / Rubik's Cube</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Format</span> <span class="val">Abonnement Mensuel</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">3 000 DA / mois</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Échecs / Rubik's Cube (3000 DA/mois)">Inscrire mon enfant</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge" style="background:#F3E8FF;color:#7E22CE">Technologie</div>
-          <h3 class="cc-title">Robotique pour Enfants</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Format</span> <span class="val">Module complet</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">12 000 DA</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Robotique Enfants (12000 DA)">Inscrire mon enfant</button></div>
-        </article>
-      </div>
-    </div>
-
-    <!-- DIVERS -->
-    <div class="cat-panel" id="cat-divers" role="tabpanel" aria-labelledby="tab-divers">
-      <div class="panel-header">
-        <div class="panel-icon">🛠️</div>
-        <h2 class="panel-title">Formations Divers</h2>
-      </div>
-      <div class="courses-grid">
-        <article class="course-card">
-          <div class="cc-badge cc-badge--red">Design Graphique</div>
-          <h3 class="cc-title">Canva / Illustrator / Photoshop</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">16h / logiciel</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">6 000 DA / log.</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Design Graphique (Canva/Illu/PS)">S'inscrire</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge cc-badge--blue">Statistiques & Calcul</div>
-          <h3 class="cc-title">R — Statistiques / LaTeX / Matlab</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">16h à 24h</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">4 000 DA / log.</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="R / LaTeX / Matlab">S'inscrire</button></div>
-        </article>
-        <article class="course-card">
-          <div class="cc-badge cc-badge--green">Audiovisuel</div>
-          <h3 class="cc-title">Introduction Photo / Montage Vidéo</h3>
-          <div class="cc-meta">
-            <div class="meta-item"><span>Durée</span> <span class="val">16h / module</span></div>
-            <div class="meta-item price"><span>Tarif</span> <span class="val">~6 000 DA / mod.</span></div>
-          </div>
-          <div class="cc-footer"><button class="btn-course" data-open-modal="register" data-course="Photo / Montage Vidéo">S'inscrire</button></div>
-        </article>
-      </div>
-    </div>
-
-  </section>
+{% else %}
+    <p style="text-align: center; width: 100%; color: white;">Aucune cat�gorie disponible pour le moment.</p>
+{% endfor %}
+    </section>
 </main>
 
-<!-- ══════════════════════════════════
+<!-- ??????????????????????????????????
      REGISTER MODAL
-══════════════════════════════════ -->
+?????????????????????????????????? -->
 <div class="modal-backdrop" id="modal-register" role="dialog" aria-modal="true" aria-labelledby="reg-title" aria-describedby="reg-sub">
   <div class="modal-box">
     <div class="modal-head">
       <div>
-        <div class="modal-head-icon" aria-hidden="true">📋</div>
-        <h2 class="modal-title" id="reg-title">Inscription à une Formation</h2>
-        <p class="modal-sub" id="reg-sub">Notre équipe vous recontactera sous 24h pour confirmer.</p>
+        <div class="modal-head-icon" aria-hidden="true">?</div>
+        <h2 class="modal-title" id="reg-title">Inscription � une Formation</h2>
+        <p class="modal-sub" id="reg-sub">Notre �quipe vous recontactera sous 24h pour confirmer.</p>
       </div>
       <button class="modal-close-btn" data-close-modal="register" aria-label="Fermer">&times;</button>
     </div>
@@ -780,13 +562,13 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="r-name">Nom complet <span class="req">*</span></label>
-            <input class="form-control" type="text" id="r-name" required minlength="2" autocomplete="name" placeholder="Votre nom et prénom" aria-describedby="r-name-e">
+            <input class="form-control" type="text" id="r-name" required minlength="2" autocomplete="name" placeholder="Votre nom et pr�nom" aria-describedby="r-name-e">
             <span class="form-err-msg" id="r-name-e">Nom complet requis.</span>
           </div>
           <div class="form-group">
-            <label class="form-label" for="r-phone">Téléphone <span class="req">*</span></label>
+            <label class="form-label" for="r-phone">T�l�phone <span class="req">*</span></label>
             <input class="form-control" type="tel" id="r-phone" required pattern="[0-9+\s]{9,15}" autocomplete="tel" placeholder="0xxx xx xx xx" aria-describedby="r-phone-e">
-            <span class="form-err-msg" id="r-phone-e">Numéro invalide.</span>
+            <span class="form-err-msg" id="r-phone-e">Num�ro invalide.</span>
           </div>
         </div>
         <div class="form-group">
@@ -795,10 +577,10 @@
           <span class="form-err-msg" id="r-email-e">Email invalide.</span>
         </div>
         <div class="form-group">
-          <label class="form-label" for="r-course">Formation sélectionnée <span class="req">*</span></label>
+          <label class="form-label" for="r-course">Formation s�lectionn�e <span class="req">*</span></label>
           <!-- Using text input instead of select since it's prefilled from buttons, user can edit if needed -->
           <input class="form-control" type="text" id="r-course" required readonly style="background:var(--light); cursor:default;" aria-describedby="r-course-e">
-          <span class="form-err-msg" id="r-course-e">Veuillez sélectionner une formation.</span>
+          <span class="form-err-msg" id="r-course-e">Veuillez s�lectionner une formation.</span>
         </div>
         <div class="form-submit">
           <button type="submit" class="btn btn-red">
@@ -809,9 +591,9 @@
         </div>
       </form>
       <div class="form-success-state" id="reg-success" role="status" aria-live="polite">
-        <div class="success-circle" aria-hidden="true">✓</div>
-        <div class="success-title">Demande Envoyée !</div>
-        <p class="success-body">Votre client email s'ouvre avec le récapitulatif. Si besoin, contactez-nous au <a href="tel:+213792008534" style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
+        <div class="success-circle" aria-hidden="true">?</div>
+        <div class="success-title">Demande Envoy�e !</div>
+        <p class="success-body">Votre client email s'ouvre avec le r�capitulatif. Si besoin, contactez-nous au <a href="tel:+213792008534" style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
         <button class="btn btn-red" data-close-modal="register">Fermer</button>
       </div>
     </div>
@@ -822,19 +604,19 @@
 <footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="footer-inner">
-      <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits réservés.</p>
+      <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits r�serv�s.</p>
       <nav class="footer-links" aria-label="Pied de page">
-        <a href="{{ url_for('public.categories') }}" >Nos Cours</a>
-        <a href="index.html#packs">Packs</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="{{ url_for('public.categories') }}">Nos Cours</a>
+        <a href="{{ url_for('public.index') }}#packs">Packs</a>
+        <a href="{{ url_for('public.index') }}#contact">Contact</a>
       </nav>
     </div>
   </div>
 </footer>
 
-<!-- ══════════════════════════════════
+<!-- ??????????????????????????????????
      JAVASCRIPT
-══════════════════════════════════ -->
+?????????????????????????????????? -->
 <script>
 (function(){
   'use strict';
@@ -951,7 +733,7 @@
     f.addEventListener('input',()=>{ if(f.classList.contains('err')) validateField(f); });
   });
 
-  /* REGISTER SUBMIT via EmailJS */
+  /* REGISTER SUBMIT */
   $('#reg-form').addEventListener('submit', async function(e){
     e.preventDefault();
     const fields=$$('input[required]',this);
@@ -962,28 +744,34 @@
     btn.innerHTML = 'Envoi en cours...';
     btn.disabled = true;
 
-    const templateParams = {
-      type: 'Inscription à une Formation',
-      from_name: $('#r-name').value.trim(),
-      phone: $('#r-phone').value.trim(),
-      email: $('#r-email') ? $('#r-email').value.trim() : 'N/A',
-      course: $('#r-course').value,
-      message: 'Inscription depuis le catalogue',
-      date: new Date().toLocaleDateString('fr-FR')
+    const data={
+      name:$('#r-name').value.trim(), 
+      phone:$('#r-phone').value.trim(), 
+      email:$('#r-email').value.trim(), 
+      course:$('#r-course').value,
+      msg: ''
     };
     
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      
-      this.style.display='none';
-      const succ = $('#reg-success') || document.querySelector('.form-success-state');
-      if (succ) {
-        succ.querySelector('.success-body').innerHTML = 'Votre demande a été envoyée avec succès. Notre équipe vous contactera très prochainement.';
-        succ.classList.add('show');
-      }
+      const data = {
+      name: $('#r-name').value.trim(),
+      phone: $('#r-phone').value.trim(),
+      email: $('#r-email').value.trim(),
+      course: $('#r-course').value,
+      msg: ''
+    };
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) throw new Error('Erreur r�seau');
+    this.style.display='none';
+      const succ = $('#reg-success');
+      succ.querySelector('.success-body').innerHTML = 'Votre demande a �t� envoy�e avec succ�s. Notre �quipe vous contactera tr�s prochainement.';
+      succ.classList.add('show');
     } catch (error) {
-      console.error('EmailJS error:', error);
-      alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
+      alert("Une erreur s'est produite lors de l'envoi. Veuillez r�essayer plus tard.");
       btn.innerHTML = originalText;
       btn.disabled = false;
     }
@@ -991,5 +779,46 @@
 
 })();
 </script>
+  <!-- ???????????????????????????????????????????????????????????????
+     ADMIN GATEWAY MODAL
+??????????????????????????????????????????????????????????????? -->
+  <div class="modal-backdrop admin-gateway" id="modal-admin" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+    <div class="modal-box cyberpunk-box">
+      <div class="modal-head">
+        <div>
+          <div class="modal-head-icon" aria-hidden="true" style="background:var(--red);color:var(--white);border:none;box-shadow:0 0 15px var(--red-glow)">?</div>
+          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Acc�s R�serv�</h2>
+          <p class="modal-sub" style="color:var(--muted)">Gateway s�curis�e Noblesse CMS</p>
+        </div>
+        <button class="modal-close-btn" data-close-modal="admin" aria-label="Fermer" style="color:var(--white);border-color:rgba(255,255,255,0.1)">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="admin-login-form" action="{{ url_for('admin.login') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div id="admin-error" style="display:none; padding: 10px; margin-bottom: 1rem; border-radius: 8px; background: rgba(209, 0, 14, 0.1); color: var(--red); border: 1px solid rgba(209, 0, 14, 0.3); text-align: center; font-size: 0.9rem;"></div>
+          <div class="form-group">
+            <label class="form-label" for="a-username" style="color:var(--white)">Identifiant <span class="req">*</span></label>
+            <input class="form-control" type="text" id="a-username" name="username" required autocomplete="username" placeholder="Director" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="a-password" style="color:var(--white)">Access Code <span class="req">*</span></label>
+            <input class="form-control" type="password" id="a-password" name="password" required placeholder="������������" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
+          </div>
+          <div class="form-submit" style="margin-top: 2rem">
+            <button type="submit" class="btn btn-red" style="width:100%;box-shadow: 0 0 20px var(--red-glow)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              S'authentifier
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Animations JS -->
+  <script src="{{ url_for('static', filename='js/animations.js') }}?v=4"></script>
 </body>
 </html>
