@@ -1,8 +1,18 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from app.models import UserRegistration, Appointment, db
 from datetime import datetime
 
 api_bp = Blueprint('api', __name__)
+
+
+@api_bp.after_request
+def add_no_cache_headers(response):
+    """Force browsers and proxies to never cache any API response."""
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
 
 @api_bp.route('/register', methods=['POST'])
 def register():
@@ -45,9 +55,35 @@ def get_catalog():
     services = Service.query.filter_by(status='published').order_by(Service.sort_order).all()
     
     cat_data = [{"id": c.id, "name": c.name, "slug": c.slug} for c in categories]
-    srv_data = [{"id": s.id, "title": s.title, "category_id": s.category_id, "price": s.price, "description": s.description} for s in services]
-    
-    return jsonify({
+    srv_data = [{
+        "id": s.id,
+        "title": s.title,
+        "category_id": s.category_id,
+        "price": s.price,
+        "description": s.description,
+        "status": s.status,
+        "sort_order": s.sort_order
+    } for s in services]
+
+    resp = jsonify({
         "categories": cat_data,
         "services": srv_data
-    }), 200
+    })
+    resp.status_code = 200
+    # Force browsers and proxies to never cache the live catalog
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+@api_bp.route('/reset_db_fix', methods=['GET'])
+def reset_db_fix():
+    """Endpoint to trigger the DB seed from the web to guarantee UTF-8 encoding in SQLite"""
+    try:
+        import sys
+        sys.path.append(current_app.root_path)
+        from seed_db import seed_data
+        seed_data()
+        return jsonify({"status": "success", "message": "Database successfully re-seeded with perfect UTF-8 characters! Refresh your website."}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500

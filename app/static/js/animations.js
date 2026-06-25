@@ -641,33 +641,19 @@
     const logo = $('.logo');
     if (!logo) return;
 
-    let clickCount = 0;
-    let clickTimer = null;
-
     logo.addEventListener('click', (e) => {
-      clickCount++;
-      
-      if (clickCount === 1) {
-        clickTimer = setTimeout(() => {
-          clickCount = 0; // Reset after 600ms if not triple clicked
-        }, 600);
-      }
+      e.preventDefault();
+      e.stopPropagation();
 
-      if (clickCount >= 3) {
-        e.preventDefault();
-        clearTimeout(clickTimer);
-        clickCount = 0;
-        
-        // Open Admin Modal
-        const adminModal = $('#modal-admin');
-        if (adminModal) {
-          adminModal.classList.add('open');
-          // Focus first input
-          setTimeout(() => {
-            const input = $('#a-username');
-            if (input) input.focus();
-          }, 450);
-        }
+      const adminModal = $('#modal-admin');
+      if (adminModal) {
+        adminModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        // Focus the username input after the modal animation finishes
+        setTimeout(() => {
+          const input = $('#a-username');
+          if (input) input.focus();
+        }, 450);
       }
     });
 

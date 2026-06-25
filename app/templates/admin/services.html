@@ -15,7 +15,7 @@
                 <input type="text" id="title" name="title" class="form-control" required>
             </div>
             <div class="form-group">
-                <label class="form-label" for="category_id">Catégorie</label>
+                <label class="form-label" for="category_id">Cat�gorie</label>
                 <select id="category_id" name="category_id" class="form-control" required>
                     {% for cat in categories %}
                     <option value="{{ cat.id }}">{{ cat.name }}</option>
@@ -33,7 +33,7 @@
             <div class="form-group">
                 <label class="form-label" for="status">Statut</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="published">Publié</option>
+                    <option value="published">Publi�</option>
                     <option value="draft">Brouillon</option>
                 </select>
             </div>
@@ -49,7 +49,7 @@
             <thead>
                 <tr>
                     <th>Titre</th>
-                    <th>Catégorie</th>
+                    <th>Cat�gorie</th>
                     <th>Prix</th>
                     <th>Statut</th>
                     <th>Actions</th>
@@ -65,12 +65,12 @@
                         <form method="POST" action="{{ url_for('admin.toggle_service', id=service.id) }}" style="display:inline;">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                             <button type="submit" class="btn btn-secondary" style="padding: 4px 8px; font-size: 0.8rem;">
-                                {{ 'Publié' if service.status == 'published' else 'Brouillon' }}
+                                {{ 'Publi�' if service.status == 'published' else 'Brouillon' }}
                             </button>
                         </form>
                     </td>
                     <td>
-                        <form method="POST" action="{{ url_for('admin.delete_service', id=service.id) }}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr ?');">
+                        <form method="POST" action="{{ url_for('admin.delete_service', id=service.id) }}" style="display:inline;" onsubmit="return confirm('�tes-vous s�r ?');">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                             <button type="submit" class="btn btn-danger" style="padding: 4px 8px;"><i data-lucide="trash-2" style="width: 16px; height: 16px;"></i></button>
                         </form>
@@ -78,7 +78,7 @@
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="5" style="text-align: center;">Aucun service trouvé.</td>
+                    <td colspan="5" style="text-align: center;">Aucun service trouv�.</td>
                 </tr>
                 {% endfor %}
             </tbody>

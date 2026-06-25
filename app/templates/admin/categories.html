@@ -2,16 +2,16 @@
 
 {% block content %}
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-4);">
-    <h1>Gestion des Catégories</h1>
+    <h1>Gestion des Cat�gories</h1>
 </div>
 
 <div class="glass-panel" style="margin-bottom: var(--spacing-4);">
-    <h3 style="margin-bottom: var(--spacing-3);">Ajouter une Catégorie</h3>
+    <h3 style="margin-bottom: var(--spacing-3);">Ajouter une Cat�gorie</h3>
     <form method="POST" action="{{ url_for('admin.categories') }}">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-3);">
             <div class="form-group">
-                <label class="form-label" for="name">Nom de la catégorie</label>
+                <label class="form-label" for="name">Nom de la cat�gorie</label>
                 <input type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="form-group">
@@ -24,7 +24,7 @@
 </div>
 
 <div class="glass-panel">
-    <h3>Liste des Catégories</h3>
+    <h3>Liste des Cat�gories</h3>
     <div class="table-wrapper">
         <table class="data-table">
             <thead>
@@ -40,7 +40,7 @@
                     <td>{{ category.name }}</td>
                     <td>{{ category.slug }}</td>
                     <td>
-                        <form method="POST" action="{{ url_for('admin.delete_category', id=category.id) }}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr ? Cela pourrait affecter les services liés.');">
+                        <form method="POST" action="{{ url_for('admin.delete_category', id=category.id) }}" style="display:inline;" onsubmit="return confirm('�tes-vous s�r ? Cela pourrait affecter les services li�s.');">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                             <button type="submit" class="btn btn-danger" style="padding: 4px 8px;"><i data-lucide="trash-2" style="width: 16px; height: 16px;"></i></button>
                         </form>
@@ -48,7 +48,7 @@
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="3" style="text-align: center;">Aucune catégorie trouvée.</td>
+                    <td colspan="3" style="text-align: center;">Aucune cat�gorie trouv�e.</td>
                 </tr>
                 {% endfor %}
             </tbody>

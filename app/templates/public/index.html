@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Centre Noblesse School â€” Formation professionnelle d'excellence en Langues, Informatique, Intelligence Artificielle, Kids Program et plus. AlgÃ©rie.">
-  <title>Centre Noblesse School â€” Accueil</title>
+    content="Centre Noblesse School — Formation professionnelle d'excellence en🌐 Langues, Informatique, Intelligence Artificielle,🎯 Kids Program et plus. Algérie.">
+  <title>Centre Noblesse School — Accueil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -14,10 +14,10 @@
     rel="stylesheet">
   <!-- Custom Animations stylesheet (Blur Text, Split Text, Scroll Reveal,
        Click Spark, Star Border, Magic Bento, Pill Nav) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}?v=4">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}?v={{ config.ASSET_VERSION }}">
 
   <style>
-    /* â”€â”€â”€ DESIGN TOKENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── DESIGN TOKENS ─────────────────────────────────── */
     :root {
       --red: #D1000E;
       --red-dark: #a8000b;
@@ -48,7 +48,7 @@
       --max-w: 1380px;
     }
 
-    /* â”€â”€â”€ RESET â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── RESET ──────────────────────────────────────────── */
     *,
     *::before,
     *::after {
@@ -118,7 +118,7 @@
       border: 0;
     }
 
-    /* â”€â”€â”€ LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── LAYOUT ─────────────────────────────────────────── */
     .container {
       width: 100%;
       max-width: var(--max-w);
@@ -126,7 +126,7 @@
       padding: 0 clamp(1rem, 5vw, 3rem);
     }
 
-    /* â”€â”€â”€ BUTTONS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── BUTTONS ────────────────────────────────────────── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -195,7 +195,7 @@
       color: var(--red);
     }
 
-    /* â”€â”€â”€ REVEAL ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── REVEAL ANIMATION ───────────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(36px);
@@ -223,7 +223,7 @@
       transition-delay: .4s;
     }
 
-    /* â”€â”€â”€ NAVIGATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── NAVIGATION ─────────────────────────────────────── */
     .site-header {
       position: fixed;
       top: 0;
@@ -421,7 +421,7 @@
       gap: .5rem;
     }
 
-    /* â”€â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── HERO ──────────────────────────────────────────── */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -437,7 +437,7 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      background-image: url('/static/images/hero-bg.jpg');
+      background-image: url("{{ url_for('static', filename='images/hero-bg.jpg') }}");
       background-size: cover;
       background-position: center 40%;
       background-repeat: no-repeat;
@@ -622,7 +622,7 @@
       }
     }
 
-    /* â”€â”€â”€ VALUE STRIPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── VALUE STRIPS ───────────────────────────────────── */
     .value-strip {
       background: var(--dark-3);
       padding: 1rem 0;
@@ -666,7 +666,7 @@
       font-size: .55rem;
     }
 
-    /* â”€â”€â”€ INTRO / ABOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── INTRO / ABOUT ──────────────────────────────────── */
     .about-section {
       background: var(--white);
       padding: clamp(5rem, 10vw, 8rem) 0;
@@ -867,7 +867,7 @@
       margin-top: 2px;
     }
 
-    /* â”€â”€â”€ STATS SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── STATS SECTION ──────────────────────────────────── */
     .stats-section {
       background: linear-gradient(135deg, var(--dark) 0%, #0D1730 60%, var(--dark) 100%);
       padding: clamp(4rem, 8vw, 7rem) 0;
@@ -977,7 +977,7 @@
       line-height: 1.4;
     }
 
-    /* â”€â”€â”€ COURSES GATEWAY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── COURSES GATEWAY ────────────────────────────────── */
     .gateway-section {
       background: var(--light);
       padding: clamp(5rem, 10vw, 8rem) 0;
@@ -1082,7 +1082,7 @@
       transform: translateX(4px);
     }
 
-    /* Gateway visual â€” mini category preview */
+    /* Gateway visual — mini category preview */
     .gateway-visual {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1123,7 +1123,7 @@
       color: var(--muted);
     }
 
-    /* â”€â”€â”€ PACKS SECTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── PACKS SECTION ──────────────────────────────────── */
     .packs-section {
       background: var(--dark-2);
       padding: clamp(5rem, 10vw, 8rem) 0;
@@ -1309,7 +1309,7 @@
     }
 
     .pack-include-item::before {
-      content: 'âœ“';
+      content: '✓';
       color: var(--blue);
       font-weight: 800;
       font-size: .8rem;
@@ -1381,7 +1381,7 @@
       color: var(--dark);
     }
 
-    /* â”€â”€â”€ CONTACT STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── CONTACT STRIP ──────────────────────────────────── */
     .contact-strip {
       background: var(--dark);
       padding: clamp(4rem, 8vw, 6rem) 0;
@@ -1480,7 +1480,7 @@
       height: 16px;
     }
 
-    /* â”€â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── FOOTER ─────────────────────────────────────────── */
     .site-footer {
       background: var(--dark);
       border-top: 1px solid var(--border);
@@ -1515,7 +1515,7 @@
       color: var(--blue);
     }
 
-    /* â”€â”€â”€ BACK TO TOP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── BACK TO TOP ────────────────────────────────────── */
     .back-top {
       position: fixed;
       bottom: 28px;
@@ -1545,7 +1545,7 @@
       transform: translateY(-3px);
     }
 
-    /* â”€â”€â”€ MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+    /* ─── MODAL ──────────────────────────────────────────── */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -1786,26 +1786,26 @@
 
 
   <script>
-    // â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
-    // â•‘  EMAILJS CONFIG â€” Replace these 3 values with yours    â•‘
-    // â•‘  Get them from https://www.emailjs.com/                â•‘
-    // â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    // ╔�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?╗
+    // ║  EMAILJS CONFIG — Replace these 3 values with yours    ║
+    // ║  Get them from https://www.emailjs.com/                ║
+    // ╚�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
 
   </script>
 </head>
 
 <body>
 
-  <!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+  <!-- � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � 
      NAVIGATION
-â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+� � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � �  -->
   <header class="site-header" id="site-header">
     <div class="container">
       <div class="nav-inner">
-        <a href="{{ url_for('public.index') }}" class="logo" aria-label="Centre Noblesse School â€“ Accueil">
+        <a href="{{ url_for('public.index') }}" class="logo" aria-label="Centre Noblesse School – Accueil">
           <div class="logo-icon" aria-hidden="true"
             style="background: transparent; border: none; box-shadow: none; width: auto; height: auto;">
-            <img src="app/static/images/logo.png" alt="Logo Centre Noblesse AHM"
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Centre Noblesse AHM"
               style="height: 64px; width: auto; display: block; object-fit: contain;">
           </div>
         </a>
@@ -1838,10 +1838,10 @@
       <div class="logo-name" style="color:var(--white)">Centre Noblesse</div>
       <button class="mob-close" id="mob-close" aria-label="Fermer">&times;</button>
     </div>
-    <a href="{{ url_for('public.index') }}" class="mob-link" data-mob-nav>ðŸ   Accueil</a>
-    <a href="{{ url_for('public.categories') }}" class="mob-link" data-mob-nav>ðŸ“š Nos Cours</a>
-    <a href="#packs" class="mob-link" data-mob-nav>â­  Nos Packs</a>
-    <a href="#contact" class="mob-link" data-mob-nav>ðŸ“  Contact</a>
+    <a href="{{ url_for('public.index') }}" class="mob-link" data-mob-nav>� � Accueil</a>
+    <a href="{{ url_for('public.categories') }}" class="mob-link" data-mob-nav>📚 Nos Cours</a>
+    <a href="#packs" class="mob-link" data-mob-nav>� Nos Packs</a>
+    <a href="#contact" class="mob-link" data-mob-nav>� Contact</a>
     <div class="mob-footer">
       <button class="btn btn-red" data-open-modal="register" data-mob-nav style="justify-content:center">S'inscrire
         maintenant</button>
@@ -1852,9 +1852,9 @@
 
   <main id="main">
 
-    <!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+    <!-- � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � 
        HERO
-  â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+  � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � �  -->
     <section class="hero" id="home" aria-labelledby="hero-name">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
@@ -1862,7 +1862,7 @@
         <div class="hero-content">
           <div class="hero-eyebrow">
             <div class="eyebrow-dot" aria-hidden="true"></div>
-            Ã‰cole de Formation Professionnelle Â· AlgÃ©rie
+            École de Formation Professionnelle · Algérie
           </div>
           <h1 class="hero-name" id="hero-name">
             <!-- cn-blur-target: BlurText component applied word-by-word -->
@@ -1870,8 +1870,8 @@
             <span class="line accent cn-blur-target" data-blur-delay="110" data-blur-dir="top">Noblesse School</span>
           </h1>
           <p class="hero-desc cn-split-target" data-split-delay="40">
-            Un écosystème éducatif d'élite où l'excellence pédagogique rencontre la technologie moderne. Langues,
-            Informatique, Intelligence Artificielle, Marketing et programmes Enfants — façonnons ensemble votre
+            Un �cosyst�me �ducatif d'�lite o� l'excellence p�dagogique rencontre la technologie moderne.🌐 Langues,
+            Informatique, Intelligence Artificielle, Marketing et programmes Enfants � fa�onnons ensemble votre
             avenir
             professionnel.
           </p>
@@ -1903,7 +1903,7 @@
         <div class="scroll-wheel">
           <div class="scroll-dot"></div>
         </div>
-        DÃ©filer
+        Défiler
       </div>
     </section>
 
@@ -1911,71 +1911,71 @@
     <div class="value-strip" aria-hidden="true">
       <div class="strip-track">
         <!-- duplicate for seamless loop -->
-        <span class="strip-item"><span class="strip-dot">â— </span> Cours de Langues</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> DÃ©veloppement Web</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Intelligence Artificielle</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Kids Program</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Photographie &amp; VidÃ©o</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Formation de Formateurs</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> PNL &amp; Marketing</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Cyber SÃ©curitÃ©</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Cours de Langues</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> DÃ©veloppement Web</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Intelligence Artificielle</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Kids Program</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Photographie &amp; VidÃ©o</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Formation de Formateurs</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> PNL &amp; Marketing</span>
-        <span class="strip-item"><span class="strip-dot">â— </span> Cyber SÃ©curitÃ©</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Cours de🌐 Langues</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Développement Web</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Intelligence Artificielle</span>
+        <span class="strip-item"><span class="strip-dot">� </span>🎯 Kids Program</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Photographie &amp; Vidéo</span>
+        <span class="strip-item"><span class="strip-dot">� </span>🎤 Formation de Formateurs</span>
+        <span class="strip-item"><span class="strip-dot">� </span> PNL &amp; Marketing</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Cyber Sécurité</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Cours de🌐 Langues</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Développement Web</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Intelligence Artificielle</span>
+        <span class="strip-item"><span class="strip-dot">� </span>🎯 Kids Program</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Photographie &amp; Vidéo</span>
+        <span class="strip-item"><span class="strip-dot">� </span>🎤 Formation de Formateurs</span>
+        <span class="strip-item"><span class="strip-dot">� </span> PNL &amp; Marketing</span>
+        <span class="strip-item"><span class="strip-dot">� </span> Cyber Sécurité</span>
       </div>
     </div>
 
-    <!-- â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+    <!-- � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � 
        ABOUT / INTRO
-  â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â•  -->
+  � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � �  -->
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="container">
         <div class="about-grid">
           <div class="reveal">
             <p class="section-eyebrow">Notre Mission</p>
-            <h2 class="section-h2" id="about-title">Un Centre de Formation PensÃ© pour l'Excellence</h2>
+            <h2 class="section-h2" id="about-title">Un Centre de Formation Pensé pour l'Excellence</h2>
             <p class="section-lead">
-              Centre Noblesse School est un Ã©cosystÃ¨me pÃ©dagogique complet qui allie rigueur acadÃ©mique, mÃ©thodes
-              modernes et accompagnement personnalisÃ© â€” pour permettre Ã  chaque apprenant d'atteindre son plein
+              Centre Noblesse School est un écosystème pédagogique complet qui allie rigueur académique, méthodes
+              modernes et accompagnement personnalisé — pour permettre à chaque apprenant d'atteindre son plein
               potentiel.
             </p>
             <div class="about-pillars">
               <div class="pillar">
-                <div class="pillar-icon pillar-icon--red">ðŸ‘¨â€ ðŸ «</div>
+                <div class="pillar-icon pillar-icon--red">👨� � �</div>
                 <div>
-                  <div class="pillar-title">Formateurs CertifiÃ©s</div>
-                  <div class="pillar-desc">Experts sectoriels avec des annÃ©es d'expÃ©rience terrain et des
+                  <div class="pillar-title">Formateurs Certifiés</div>
+                  <div class="pillar-desc">Experts sectoriels avec des années d'expérience terrain et des
                     certifications
                     reconnues.</div>
                 </div>
               </div>
               <div class="pillar">
-                <div class="pillar-icon pillar-icon--blue">ðŸŽ¯</div>
+                <div class="pillar-icon pillar-icon--blue">🎯</div>
                 <div>
-                  <div class="pillar-title">Groupes RÃ©duits &amp; Suivi PersonnalisÃ©</div>
-                  <div class="pillar-desc">Effectifs limitÃ©s pour un accompagnement de qualitÃ© et une progression
+                  <div class="pillar-title">Groupes Réduits &amp; Suivi Personnalisé</div>
+                  <div class="pillar-desc">Effectifs limités pour un accompagnement de qualité et une progression
                     rapide.</div>
                 </div>
               </div>
               <div class="pillar">
-                <div class="pillar-icon pillar-icon--gold">ðŸ †</div>
+                <div class="pillar-icon pillar-icon--gold">� �</div>
                 <div>
                   <div class="pillar-title">Certificats Officiels Remis</div>
-                  <div class="pillar-desc">Un certificat valorisable reconnu est dÃ©livrÃ© Ã  l'issue de chaque
+                  <div class="pillar-desc">Un certificat valorisable reconnu est délivré à l'issue de chaque
                     formation
-                    rÃ©ussie.</div>
+                    réussie.</div>
                 </div>
               </div>
               <div class="pillar">
-                <div class="pillar-icon pillar-icon--green">ðŸ’¡</div>
+                <div class="pillar-icon pillar-icon--green">💡</div>
                 <div>
                   <div class="pillar-title">Programmes Tech-Forward</div>
-                  <div class="pillar-desc">IA, CybersÃ©curitÃ©, Dev Web â€” cursus conÃ§us pour les mÃ©tiers du futur.
+                  <div class="pillar-desc">IA, Cybersécurité, Dev Web — cursus conçus pour les métiers du futur.
                   </div>
                 </div>
               </div>
@@ -1984,13 +1984,13 @@
           <div class="about-visual reveal reveal-delay-2">
             <div class="about-img-wrap">
               <img src="{{ url_for('static', filename='images/hero-bg.jpg') }}"
-                alt="IntÃ©rieur du Centre Noblesse School â€” salle de formation moderne" loading="lazy">
+                alt="Intérieur du Centre Noblesse School — salle de formation moderne" loading="lazy">
             </div>
             <div class="about-badge">
-              <div class="about-badge-icon">ðŸŽ“</div>
+              <div class="about-badge-icon">🎓</div>
               <div>
                 <div class="about-badge-val">500+</div>
-                <div class="about-badge-label">Apprenants formÃ©s</div>
+                <div class="about-badge-label">Apprenants formés</div>
               </div>
             </div>
           </div>
@@ -1998,23 +1998,24 @@
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
        STATS PANEL
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
     <section class="stats-section" id="stats" aria-labelledby="stats-title">
       <div class="stats-bg-red" aria-hidden="true"></div>
       <div class="stats-bg-blue" aria-hidden="true"></div>
       <div class="container stats-inner">
         <div class="stats-header reveal">
           <p class="section-eyebrow section-eyebrow--blue" style="justify-content:center">Nos Chiffres</p>
-          <h2 class="section-h2 section-h2--white cn-scroll-reveal" id="stats-title" data-sr-delay="50">L'Excellence en Chiffres</h2>
-          <p class="section-lead section-lead--muted" style="margin:0 auto;text-align:center">Des rÃ©sultats concrets
+          <h2 class="section-h2 section-h2--white cn-scroll-reveal" id="stats-title" data-sr-delay="50">L'Excellence en
+            Chiffres</h2>
+          <p class="section-lead section-lead--muted" style="margin:0 auto;text-align:center">Des résultats concrets
             qui
-            parlent d'eux-mÃªmes.</p>
+            parlent d'eux-mêmes.</p>
         </div>
         <div class="stats-grid">
           <article class="stat-card reveal reveal-delay-1">
-            <div class="stat-icon" aria-hidden="true">ðŸ“š</div>
+            <div class="stat-icon" aria-hidden="true">📚</div>
             <div class="stat-num">
               <span class="count-up" data-target="50" data-suffix="+">0</span>
               <span class="suffix">+</span>
@@ -2022,22 +2023,22 @@
             <div class="stat-label">Formations &amp; Cours Disponibles</div>
           </article>
           <article class="stat-card reveal reveal-delay-2" style="--glow-color: 102, 192, 255">
-            <div class="stat-icon" aria-hidden="true">ðŸŒ</div>
+            <div class="stat-icon" aria-hidden="true">�?</div>
             <div class="stat-num">
               <span class="count-up" data-target="7">0</span>
             </div>
-            <div class="stat-label">Langues Ã‰trangÃ¨res EnseignÃ©es</div>
+            <div class="stat-label">Langues Étrangères Enseignées</div>
           </article>
           <article class="stat-card reveal reveal-delay-3">
-            <div class="stat-icon" aria-hidden="true">ðŸ†</div>
+            <div class="stat-icon" aria-hidden="true">�?�</div>
             <div class="stat-num">
               <span class="count-up" data-target="500">0</span>
               <span class="suffix">+</span>
             </div>
-            <div class="stat-label">BÃ©nÃ©ficiaires FormÃ©s avec SuccÃ¨s</div>
+            <div class="stat-label">Bénéficiaires Formés avec Succès</div>
           </article>
           <article class="stat-card reveal reveal-delay-4" style="--glow-color: 102, 192, 255">
-            <div class="stat-icon" aria-hidden="true">ðŸ“œ</div>
+            <div class="stat-icon" aria-hidden="true">📜</div>
             <div class="stat-num">
               <span class="count-up" data-target="100">0</span>
               <span class="suffix">%</span>
@@ -2048,28 +2049,29 @@
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
        COURSES GATEWAY
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
     <section class="gateway-section" id="courses" aria-labelledby="gateway-title">
       <div class="container">
         <div class="gateway-inner">
           <div class="gateway-text reveal">
             <p class="section-eyebrow">Catalogue Complet</p>
             <!-- cn-blur-target: BlurText on gateway heading -->
-            <h2 class="section-h2 cn-blur-target" id="gateway-title" data-blur-delay="100" data-blur-dir="bottom">Des Formations Pour Chaque Ambition</h2>
+            <h2 class="section-h2 cn-blur-target" id="gateway-title" data-blur-delay="100" data-blur-dir="bottom">Des
+              Formations Pour Chaque Ambition</h2>
             <p class="section-lead">
-              Du dÃ©butant Ã  l'expert â€” explorez notre catalogue complet de plus de 50 formations rÃ©parties en 6
+              Du débutant à l'expert — explorez notre catalogue complet de plus de 50 formations réparties en 6
               grandes
-              catÃ©gories, conÃ§ues pour rÃ©pondre aux besoins du marchÃ© d'aujourd'hui et de demain.
+              catégories, conçues pour répondre aux besoins du marché d'aujourd'hui et de demain.
             </p>
             <div class="gateway-categories">
-              <span class="category-chip reveal reveal-delay-1">ðŸ’» Cours Informatique</span>
-              <span class="category-chip reveal reveal-delay-2">ðŸŽ¤ Formation de Formateurs</span>
-              <span class="category-chip reveal reveal-delay-3">ðŸŒ  Langues</span>
-              <span class="category-chip reveal reveal-delay-4">ðŸ¤– IA &amp; CybersÃ©curitÃ©</span>
-              <span class="category-chip reveal reveal-delay-1">ðŸŽ¯ Kids Program</span>
-              <span class="category-chip reveal reveal-delay-2">ðŸ› ï¸  Formation Divers</span>
+              <span class="category-chip reveal reveal-delay-1">💻💻 Cours Informatique</span>
+              <span class="category-chip reveal reveal-delay-2">🎤🎤 Formation de Formateurs</span>
+              <span class="category-chip reveal reveal-delay-3">�🌐 Langues</span>
+              <span class="category-chip reveal reveal-delay-4">🤖🤖 IA &amp; Cybersécurité</span>
+              <span class="category-chip reveal reveal-delay-1">🎯🎯 Kids Program</span>
+              <span class="category-chip reveal reveal-delay-2">🛠�🛠️ Formation Divers</span>
             </div>
             <div class="gateway-cta">
               <a href="{{ url_for('public.categories') }}" class="btn-explore" id="explore-catalog-btn">
@@ -2089,34 +2091,34 @@
 
           <div class="gateway-visual reveal reveal-delay-2">
             <div class="gw-card">
-              <div class="gw-icon">ðŸ’»</div>
+              <div class="gw-icon">💻</div>
               <div class="gw-name">Informatique</div>
               <div class="gw-count">12+ formations</div>
             </div>
             <div class="gw-card">
-              <div class="gw-icon">ðŸŒ</div>
+              <div class="gw-icon">�?</div>
               <div class="gw-name">Langues</div>
               <div class="gw-count">7 langues</div>
             </div>
             <div class="gw-card">
-              <div class="gw-icon">ðŸŽ¯</div>
+              <div class="gw-icon">🎯</div>
               <div class="gw-name">Kids Program</div>
-              <div class="gw-count">4 activitÃ©s</div>
+              <div class="gw-count">4 activités</div>
             </div>
             <div class="gw-card">
-              <div class="gw-icon">ðŸ¤–</div>
+              <div class="gw-icon">🤖</div>
               <div class="gw-name">IA &amp; CyberSec</div>
               <div class="gw-count">2 formations</div>
             </div>
             <div class="gw-card">
-              <div class="gw-icon">ðŸŽ¤</div>
+              <div class="gw-icon">🎤</div>
               <div class="gw-name">Formateurs</div>
               <div class="gw-count">4 modules</div>
             </div>
             <div class="gw-card"
               style="background:linear-gradient(135deg,var(--red) 0%,#8B0008 100%);border-color:transparent">
-              <div class="gw-icon">â­</div>
-              <div class="gw-name" style="color:var(--white)">Voir tout â†’</div>
+              <div class="gw-icon">�?</div>
+              <div class="gw-name" style="color:var(--white)">Voir tout →</div>
               <div class="gw-count" style="color:rgba(255,255,255,.65)">50+ formations</div>
             </div>
           </div>
@@ -2124,23 +2126,24 @@
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
        PACKS SECTION
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
     <section class="packs-section" id="packs" aria-labelledby="packs-title">
       <div class="packs-section-bg" aria-hidden="true"></div>
       <div class="container">
         <div class="packs-header reveal">
-          <p class="section-eyebrow section-eyebrow--blue" style="justify-content:center">Offres SpÃ©ciales</p>
+          <p class="section-eyebrow section-eyebrow--blue" style="justify-content:center">Offres Spéciales</p>
           <!-- cn-scroll-reveal: ScrollReveal word-blur on packs heading -->
-          <h2 class="section-h2 section-h2--white cn-scroll-reveal" id="packs-title" data-sr-delay="70">Nos Packs Complets</h2>
+          <h2 class="section-h2 section-h2--white cn-scroll-reveal" id="packs-title" data-sr-delay="70">Nos Packs
+            Complets</h2>
           <p class="section-lead section-lead--muted" style="margin:0 auto;text-align:center;max-width:580px">
-            Maximisez votre apprentissage avec nos parcours packagÃ©s â€” plus de contenu, moins de prix. Ã‰conomisez
-            jusqu'Ã  30%.
+            Maximisez votre apprentissage avec nos parcours packagés — plus de contenu, moins de prix. Économisez
+            jusqu'à 30%.
           </p>
         </div>
 
-                <div class="packs-grid">
+        <div class="packs-grid">
           {% for srv in services %}
           <article class="pack-card reveal reveal-delay-1" aria-label="{{ srv.title }}">
             <div class="pack-glow pack-glow--blue" aria-hidden="true"></div>
@@ -2154,7 +2157,7 @@
                 <div class="pack-price">{{ srv.price }}</div>
               </div>
               <button class="btn-pack btn-pack--blue" data-course="{{ srv.title }}" data-open-modal="register">
-                S'inscrire →
+                S'inscrire ?
               </button>
             </div>
           </article>
@@ -2162,34 +2165,35 @@
         </div>
         <div style="text-align:center;margin-top:3rem;position:relative;z-index:1" class="reveal">
           <a href="{{ url_for('public.categories') }}" class="btn btn-ghost" style="padding:1rem 2rem;font-size:.95rem">
-            Voir tous nos cours individuels â†’
+            Voir tous nos cours individuels →
           </a>
         </div>
       </div>
     </section>
 
-    <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
        CONTACT
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
     <section class="contact-strip" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="reveal" style="margin-bottom:2.5rem">
           <p class="section-eyebrow section-eyebrow--blue">Contact</p>
-          <h2 class="section-h2 section-h2--white cn-blur-target" id="contact-title" data-blur-delay="100" data-blur-dir="bottom">Restons en Contact</h2>
+          <h2 class="section-h2 section-h2--white cn-blur-target" id="contact-title" data-blur-delay="100"
+            data-blur-dir="bottom">Restons en Contact</h2>
         </div>
         <div class="contact-strip-inner reveal">
           <div class="contact-block">
-            <div class="contact-block-title">CoordonnÃ©es</div>
+            <div class="contact-block-title">Coordonnées</div>
             <div class="contact-item">
-              <div class="c-icon">ðŸ“ž</div>
+              <div class="c-icon">📞</div>
               <div>
                 <a href="tel:+213792008534">+213 792 008 534</a><br>
                 <a href="tel:+213553156848">+213 553 156 848</a>
               </div>
             </div>
             <div class="contact-item">
-              <div class="c-icon">ðŸ“</div>
-              <span>Noblesse School Â· AlgÃ©rie</span>
+              <div class="c-icon">�?</div>
+              <span>Noblesse School · Algérie</span>
             </div>
             <div class="social-row">
               <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
@@ -2213,14 +2217,14 @@
           <div class="contact-block">
             <div class="contact-block-title">Prendre Rendez-vous</div>
             <p style="font-size:.88rem;color:rgba(240,244,250,.6);line-height:1.65">Venez nous rencontrer au centre pour
-              une consultation personnalisÃ©e sur votre parcours de formation.</p>
+              une consultation personnalisée sur votre parcours de formation.</p>
             <button class="btn btn-red" data-open-modal="appointment"
-              style="margin-top:.5rem;align-self:flex-start">RÃ©server un crÃ©neau</button>
+              style="margin-top:.5rem;align-self:flex-start">Réserver un créneau</button>
           </div>
           <div class="contact-block">
             <div class="contact-block-title">S'inscrire en Ligne</div>
             <p style="font-size:.88rem;color:rgba(240,244,250,.6);line-height:1.65">Choisissez votre formation et
-              soumettez votre demande en quelques clics. Notre Ã©quipe vous contacte sous 24h.</p>
+              soumettez votre demande en quelques clics. Notre équipe vous contacte sous 24h.</p>
             <button class="btn btn-blue" data-open-modal="register"
               style="margin-top:.5rem;align-self:flex-start">Commencer mon inscription</button>
           </div>
@@ -2234,7 +2238,7 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-inner">
-        <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits rÃ©servÃ©s.</p>
+        <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits réservés.</p>
         <nav class="footer-links" aria-label="Pied de page">
           <a href="{{ url_for('public.categories') }}">Nos Cours</a>
           <a href="#packs">Packs</a>
@@ -2252,17 +2256,17 @@
     </svg>
   </button>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
      REGISTER MODAL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
   <div class="modal-backdrop" id="modal-register" role="dialog" aria-modal="true" aria-labelledby="reg-title"
     aria-describedby="reg-sub">
     <div class="modal-box">
       <div class="modal-head">
         <div>
-          <div class="modal-head-icon" aria-hidden="true">ðŸ“‹</div>
-          <h2 class="modal-title" id="reg-title">Inscription Ã  une Formation</h2>
-          <p class="modal-sub" id="reg-sub">Notre Ã©quipe vous recontactera sous 24h pour confirmer.</p>
+          <div class="modal-head-icon" aria-hidden="true">📋</div>
+          <h2 class="modal-title" id="reg-title">Inscription à une Formation</h2>
+          <p class="modal-sub" id="reg-sub">Notre équipe vous recontactera sous 24h pour confirmer.</p>
         </div>
         <button class="modal-close-btn" data-close-modal="register" aria-label="Fermer">&times;</button>
       </div>
@@ -2272,14 +2276,14 @@
             <div class="form-group">
               <label class="form-label" for="r-name">Nom complet <span class="req">*</span></label>
               <input class="form-control" type="text" id="r-name" required minlength="2" autocomplete="name"
-                placeholder="Votre nom et prÃ©nom" aria-describedby="r-name-e">
+                placeholder="Votre nom et prénom" aria-describedby="r-name-e">
               <span class="form-err-msg" id="r-name-e">Nom complet requis.</span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="r-phone">TÃ©lÃ©phone <span class="req">*</span></label>
+              <label class="form-label" for="r-phone">Téléphone <span class="req">*</span></label>
               <input class="form-control" type="tel" id="r-phone" required pattern="[0-9+\s]{9,15}" autocomplete="tel"
                 placeholder="0xxx xx xx xx" aria-describedby="r-phone-e">
-              <span class="form-err-msg" id="r-phone-e">NumÃ©ro invalide.</span>
+              <span class="form-err-msg" id="r-phone-e">Numéro invalide.</span>
             </div>
           </div>
           <div class="form-group">
@@ -2289,15 +2293,15 @@
             <span class="form-err-msg" id="r-email-e">Email invalide.</span>
           </div>
           <div class="form-group">
-            <label class="form-label" for="r-course">Formation sÃ©lectionnÃ©e <span class="req">*</span></label>
-                        <select class="form-control" id="r-course" name="course" required aria-describedby="r-course-e">
-              <option value="" disabled selected>— Chargement des formations... —</option>
+            <label class="form-label" for="r-course">Formation sélectionnée <span class="req">*</span></label>
+            <select class="form-control" id="r-course" name="course" required aria-describedby="r-course-e">
+              <option value="" disabled selected>� Chargement des formations... �</option>
             </select>
-            <span class="form-err-msg" id="r-course-e">Veuillez sÃ©lectionner une formation.</span>
+            <span class="form-err-msg" id="r-course-e">Veuillez sélectionner une formation.</span>
           </div>
           <div class="form-group">
             <label class="form-label" for="r-msg">Message (optionnel)</label>
-            <textarea class="form-control" id="r-msg" rows="3" placeholder="Votre niveau actuel, disponibilitÃ©s..."
+            <textarea class="form-control" id="r-msg" rows="3" placeholder="Votre niveau actuel, disponibilités..."
               style="resize:vertical;min-height:90px"></textarea>
           </div>
           <p class="form-hint">
@@ -2307,7 +2311,7 @@
               <line x1="12" y1="8" x2="12" y2="12" />
               <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
-            Un email rÃ©capitulatif sera prÃ©parÃ© pour notre administration.
+            Un email récapitulatif sera préparé pour notre administration.
           </p>
           <div class="form-submit">
             <button type="submit" class="btn btn-red">
@@ -2322,9 +2326,9 @@
           </div>
         </form>
         <div class="form-success-state" id="reg-success" role="status" aria-live="polite">
-          <div class="success-circle" aria-hidden="true">âœ“</div>
-          <div class="success-title">Demande EnvoyÃ©e !</div>
-          <p class="success-body">Votre client email s'ouvre avec le rÃ©capitulatif. Si besoin, contactez-nous au <a
+          <div class="success-circle" aria-hidden="true">✓</div>
+          <div class="success-title">Demande Envoyée !</div>
+          <p class="success-body">Votre client email s'ouvre avec le récapitulatif. Si besoin, contactez-nous au <a
               href="tel:+213792008534" style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
           <button class="btn btn-red" data-close-modal="register">Fermer</button>
         </div>
@@ -2332,17 +2336,17 @@
     </div>
   </div>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
      APPOINTMENT MODAL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
   <div class="modal-backdrop" id="modal-appointment" role="dialog" aria-modal="true" aria-labelledby="app-title">
     <div class="modal-box">
       <div class="modal-head" style="background:linear-gradient(135deg,#0D1730 0%,var(--dark-4) 100%)">
         <div>
           <div class="modal-head-icon" style="background:rgba(102,192,255,.15);border-color:rgba(102,192,255,.28)"
-            aria-hidden="true">ðŸ“…</div>
+            aria-hidden="true">📅</div>
           <h2 class="modal-title" id="app-title">Prendre Rendez-vous</h2>
-          <p class="modal-sub">Planifiez une consultation personnalisÃ©e avec notre Ã©quipe.</p>
+          <p class="modal-sub">Planifiez une consultation personnalisée avec notre équipe.</p>
         </div>
         <button class="modal-close-btn" data-close-modal="appointment" aria-label="Fermer">&times;</button>
       </div>
@@ -2356,16 +2360,16 @@
               <span class="form-err-msg" id="a-name-e">Nom requis.</span>
             </div>
             <div class="form-group">
-              <label class="form-label" for="a-phone">TÃ©lÃ©phone <span class="req">*</span></label>
+              <label class="form-label" for="a-phone">Téléphone <span class="req">*</span></label>
               <input class="form-control" type="tel" id="a-phone" required pattern="[0-9+\s]{9,15}" autocomplete="tel"
                 placeholder="0xxx xx xx xx" aria-describedby="a-phone-e">
-              <span class="form-err-msg" id="a-phone-e">NumÃ©ro invalide.</span>
+              <span class="form-err-msg" id="a-phone-e">Numéro invalide.</span>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="a-date">Date souhaitÃ©e <span class="req">*</span></label>
+            <label class="form-label" for="a-date">Date souhaitée <span class="req">*</span></label>
             <input class="form-control" type="date" id="a-date" required aria-describedby="a-date-e">
-            <span class="form-err-msg" id="a-date-e">Veuillez sÃ©lectionner une date.</span>
+            <span class="form-err-msg" id="a-date-e">Veuillez sélectionner une date.</span>
           </div>
           <div class="form-group">
             <label class="form-label" for="a-reason">Motif <span class="req">*</span></label>
@@ -2388,8 +2392,8 @@
           </div>
         </form>
         <div class="form-success-state" id="app-success" role="status" aria-live="polite">
-          <div class="success-circle" aria-hidden="true">ðŸ“…</div>
-          <div class="success-title">Rendez-vous DemandÃ© !</div>
+          <div class="success-circle" aria-hidden="true">📅</div>
+          <div class="success-title">Rendez-vous Demandé !</div>
           <p class="success-body">Votre client email s'ouvre. Si besoin, appelez le <a href="tel:+213792008534"
               style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
           <button class="btn btn-red" data-close-modal="appointment">Fermer</button>
@@ -2398,9 +2402,9 @@
     </div>
   </div>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+  <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
      JAVASCRIPT
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
   <script>
     (function () {
       'use strict';
@@ -2534,14 +2538,14 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
           });
-          if (!res.ok) throw new Error('Erreur réseau');
+          if (!res.ok) throw new Error('Erreur r�seau');
 
           this.style.display = 'none';
           const succ = $('#reg-success');
-          succ.querySelector('.success-body').innerHTML = 'Votre demande a été enregistrée avec succès dans notre système. Notre équipe vous contactera très prochainement.';
+          succ.querySelector('.success-body').innerHTML = 'Votre demande a �t� enregistr�e avec succ�s dans notre syst�me. Notre �quipe vous contactera tr�s prochainement.';
           succ.classList.add('show');
         } catch (error) {
-          alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
+          alert("Une erreur s'est produite lors de l'envoi. Veuillez r�essayer plus tard.");
           btn.innerHTML = originalText;
           btn.disabled = false;
         }
@@ -2571,36 +2575,35 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
           });
-          if (!res.ok) throw new Error('Erreur réseau');
+          if (!res.ok) throw new Error('Erreur r�seau');
 
           this.style.display = 'none';
           const succ = $('#app-success');
-          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a été enregistré. Nous vous contacterons pour confirmer.';
+          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a �t� enregistr�. Nous vous contacterons pour confirmer.';
           succ.classList.add('show');
         } catch (error) {
-          alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
+          alert("Une erreur s'est produite lors de l'envoi. Veuillez r�essayer plus tard.");
           btn.innerHTML = originalText;
           btn.disabled = false;
         }
       });
 
-      /* DYNAMIC CATALOG FETCH — populates registration dropdown from CMS */
-      let catalogCache = null;
+      /* DYNAMIC CATALOG FETCH � populates registration dropdown and packs from CMS */
+      async function fetchCatalogData() {
+        const res = await fetch('/api/catalog?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('Network error');
+        return await res.json();
+      }
+
       async function loadCatalog() {
         const sel = document.getElementById('r-course');
         if (!sel) return;
 
         // Show loading state
-        sel.innerHTML = '<option value="" disabled selected>— Chargement des formations... —</option>';
+        sel.innerHTML = '<option value="" disabled selected>� Chargement des formations... �</option>';
 
         try {
-          if (!catalogCache) {
-            const res = await fetch('/api/catalog');
-            if (!res.ok) throw new Error('Network error');
-            catalogCache = await res.json();
-          }
-
-          const { categories, services } = catalogCache;
+          const { categories, services } = await fetchCatalogData();
 
           // Build a map of category_id -> category name
           const catMap = {};
@@ -2615,7 +2618,7 @@
           });
 
           // Build options HTML
-          let html = '<option value="" disabled selected>— Choisissez une formation —</option>';
+          let html = '<option value="" disabled selected>� Choisissez une formation �</option>';
           for (const [catName, srvList] of Object.entries(grouped)) {
             html += `<optgroup label="${catName}">`;
             srvList.forEach(s => {
@@ -2627,13 +2630,78 @@
           sel.innerHTML = html;
         } catch (err) {
           console.warn('Catalog fetch failed, using fallback:', err);
-          sel.innerHTML = '<option value="" disabled selected>— Erreur de chargement —</option>';
+          sel.innerHTML = '<option value="" disabled selected>� Erreur de chargement �</option>';
         }
       }
 
+      async function refreshPacksFromAPI() {
+        try {
+          const { categories, services } = await fetchCatalogData();
+          const grid = document.querySelector('.packs-grid');
+          if (!grid) return;
+
+          const catMap = {};
+          categories.forEach(c => { catMap[c.id] = c.name; });
+
+          let html = '';
+          services.forEach((srv, i) => {
+            const catName = catMap[srv.category_id] || 'Formation';
+            const priceHtml = srv.price ? `<div class="pack-price">${srv.price}</div>` : '';
+            
+            html += `
+              <article class="pack-card reveal is-visible" aria-label="${srv.title}" style="transition-delay: ${0.1 * ((i % 4) + 1)}s">
+                <div class="pack-glow pack-glow--blue" aria-hidden="true"></div>
+                <div class="pack-top">
+                  <div class="pack-badge pack-badge--blue">${catName}</div>
+                  <div class="pack-name">${srv.title}</div>
+                  <div class="pack-desc">${srv.description || ''}</div>
+                </div>
+                <div class="pack-price-row">
+                  <div>
+                    ${priceHtml}
+                  </div>
+                  <button class="btn-pack btn-pack--blue" data-course="${srv.title}" data-open-modal="register">
+                    S'inscrire ?
+                  </button>
+                </div>
+              </article>
+            `;
+          });
+
+          grid.innerHTML = html;
+          
+          // Apply StarBorder structure
+          const packCards = document.querySelectorAll('.packs-grid .pack-card');
+          packCards.forEach(card => {
+            const inner = document.createElement('div');
+            inner.className = 'sb-inner';
+            while (card.firstChild) inner.appendChild(card.firstChild);
+            
+            const gradBottom = document.createElement('div');
+            gradBottom.className = 'border-gradient-bottom';
+            gradBottom.setAttribute('aria-hidden', 'true');
+            
+            const gradTop = document.createElement('div');
+            gradTop.className = 'border-gradient-top';
+            gradTop.setAttribute('aria-hidden', 'true');
+            
+            card.appendChild(gradBottom);
+            card.appendChild(gradTop);
+            card.appendChild(inner);
+            card.classList.add('star-border-container');
+          });
+
+        } catch (err) {
+          console.error('Failed to refresh packs from API:', err);
+        }
+      }
+
+      // Fetch on load
+      document.addEventListener('DOMContentLoaded', refreshPacksFromAPI);
+
       // Patch openModal to trigger catalog load on register modal
       const _origOpenModal = openModal;
-      openModal = function(id, preselect) {
+      openModal = function (id, preselect) {
         _origOpenModal(id, preselect);
         if (id === 'register') {
           loadCatalog().then(() => {
@@ -2666,34 +2734,46 @@
     })();
   </script>
 
-  <!-- ═══════════════════════════════════════════════════════════════
+  <!-- ???????????????????????????????????????????????????????????????
      ADMIN GATEWAY MODAL
-═══════════════════════════════════════════════════════════════ -->
-  <div class="modal-backdrop admin-gateway" id="modal-admin" role="dialog" aria-modal="true" aria-labelledby="admin-title">
+??????????????????????????????????????????????????????????????? -->
+  <div class="modal-backdrop admin-gateway" id="modal-admin" role="dialog" aria-modal="true"
+    aria-labelledby="admin-title">
     <div class="modal-box cyberpunk-box">
       <div class="modal-head">
         <div>
-          <div class="modal-head-icon" aria-hidden="true" style="background:var(--red);color:var(--white);border:none;box-shadow:0 0 15px var(--red-glow)">🔐</div>
-          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Accès Réservé</h2>
-          <p class="modal-sub" style="color:var(--muted)">Gateway sécurisée Noblesse CMS</p>
+          <div class="modal-head-icon" aria-hidden="true"
+            style="background:var(--red);color:var(--white);border:none;box-shadow:0 0 15px var(--red-glow)">?</div>
+          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Acc�s R�serv�</h2>
+          <p class="modal-sub" style="color:var(--muted)">Gateway s�curis�e Noblesse CMS</p>
         </div>
-        <button class="modal-close-btn" data-close-modal="admin" aria-label="Fermer" style="color:var(--white);border-color:rgba(255,255,255,0.1)">&times;</button>
+        <button class="modal-close-btn" data-close-modal="admin" aria-label="Fermer"
+          style="color:var(--white);border-color:rgba(255,255,255,0.1)">&times;</button>
       </div>
       <div class="modal-body">
         <form id="admin-login-form" action="{{ url_for('admin.login') }}" method="POST">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-          <div id="admin-error" style="display:none; padding: 10px; margin-bottom: 1rem; border-radius: 8px; background: rgba(209, 0, 14, 0.1); color: var(--red); border: 1px solid rgba(209, 0, 14, 0.3); text-align: center; font-size: 0.9rem;"></div>
-          <div class="form-group">
-            <label class="form-label" for="a-username" style="color:var(--white)">Identifiant <span class="req">*</span></label>
-            <input class="form-control" type="text" id="a-username" name="username" required autocomplete="username" placeholder="Director" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
+          <div id="admin-error"
+            style="display:none; padding: 10px; margin-bottom: 1rem; border-radius: 8px; background: rgba(209, 0, 14, 0.1); color: var(--red); border: 1px solid rgba(209, 0, 14, 0.3); text-align: center; font-size: 0.9rem;">
           </div>
           <div class="form-group">
-            <label class="form-label" for="a-password" style="color:var(--white)">Access Code <span class="req">*</span></label>
-            <input class="form-control" type="password" id="a-password" name="password" required placeholder="••••••••••••" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
+            <label class="form-label" for="a-username" style="color:var(--white)">Identifiant <span
+                class="req">*</span></label>
+            <input class="form-control" type="text" id="a-username" name="username" required autocomplete="username"
+              placeholder="Director"
+              style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="a-password" style="color:var(--white)">Access Code <span
+                class="req">*</span></label>
+            <input class="form-control" type="password" id="a-password" name="password" required
+              placeholder="������������"
+              style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
           </div>
           <div class="form-submit" style="margin-top: 2rem">
             <button type="submit" class="btn btn-red" style="width:100%;box-shadow: 0 0 20px var(--red-glow)">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" aria-hidden="true">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
               </svg>
@@ -2705,7 +2785,7 @@
     </div>
   </div>
 
-  <!-- Custom Animations JS — all 7 components (Blur Text, Split Text, Scroll Reveal,
+  <!-- Custom Animations JS � all 7 components (Blur Text, Split Text, Scroll Reveal,
        Click Spark, Star Border, Magic Bento, Pill Nav) -->
   <script src="{{ url_for('static', filename='js/animations.js') }}?v=4"></script>
 </body>
