@@ -641,19 +641,37 @@
     const logo = $('.logo');
     if (!logo) return;
 
-    logo.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+    let clickCount = 0;
+    let clickTimer = null;
 
-      const adminModal = $('#modal-admin');
-      if (adminModal) {
-        adminModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        // Focus the username input after the modal animation finishes
-        setTimeout(() => {
-          const input = $('#a-username');
-          if (input) input.focus();
-        }, 450);
+    logo.addEventListener('click', (e) => {
+      clickCount++;
+      
+      if (clickCount >= 3) {
+        // Trigger the secret admin gateway on triple click
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const adminModal = $('#modal-admin');
+        if (adminModal) {
+          adminModal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          setTimeout(() => {
+            const input = $('#a-username');
+            if (input) input.focus();
+          }, 450);
+        }
+        
+        // Reset
+        clickCount = 0;
+        clearTimeout(clickTimer);
+      } else {
+        // Normal click behavior (navigate to home) is allowed to pass through
+        // unless it reaches 3 clicks within 500ms
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, 500);
       }
     });
 

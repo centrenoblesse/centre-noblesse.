@@ -13,42 +13,42 @@ def seed_data():
         
         categories_data = {
             "Informatique": [
-                {"title": "Introduction � l'Informatique", "price": "6 000 DA", "desc": "Dur�e: 16h. Initiation aux bases de l'informatique."},
-                {"title": "Agent de Saisie", "price": "12 000 DA", "desc": "Dur�e: 40h. Formation compl�te en bureautique."},
-                {"title": "Python", "price": "8 000 DA", "desc": "Dur�e: 24h. Programmation et d�veloppement."},
-                {"title": "Langage C / C++ / Java", "price": "8 000 DA", "desc": "Dur�e: 24h / module."},
-                {"title": "Design UI/UX", "price": "10 000 DA", "desc": "Dur�e: 24h. Web Design et prototypage."},
-                {"title": "Front-End (HTML/CSS/JS)", "price": "15 000 DA", "desc": "Dur�e: 24h. D�veloppement Web Frontend."},
-                {"title": "Back-End & Base de Donn�es", "price": "25 000 DA", "desc": "Dur�e: 48h. D�veloppement Web Backend."},
-                {"title": "Initiation Cybers�curit� / IA", "price": "25 000 DA", "desc": "Dur�e: 50h. Nouvelles Technologies."}
+                {"title": "Introduction à l'Informatique", "price": "6 000 DA", "desc": "Durée: 16h. Initiation aux bases de l'informatique."},
+                {"title": "Agent de Saisie", "price": "12 000 DA", "desc": "Durée: 40h. Formation complète en bureautique."},
+                {"title": "Python", "price": "8 000 DA", "desc": "Durée: 24h. Programmation et développement."},
+                {"title": "Langage C / C++ / Java", "price": "8 000 DA", "desc": "Durée: 24h / module."},
+                {"title": "Design UI/UX", "price": "10 000 DA", "desc": "Durée: 24h. Web Design et prototypage."},
+                {"title": "Front-End (HTML/CSS/JS)", "price": "15 000 DA", "desc": "Durée: 24h. Développement Web Frontend."},
+                {"title": "Back-End & Base de Données", "price": "25 000 DA", "desc": "Durée: 48h. Développement Web Backend."},
+                {"title": "Initiation Cybersécurité / IA", "price": "25 000 DA", "desc": "Durée: 50h. Nouvelles Technologies."}
             ],
             "Training of Trainers & PNL": [
-                {"title": "Prise de Parole Publique", "price": "9 000 DA", "desc": "Dur�e: 16h. Soft Skills."},
-                {"title": "Self Marketing", "price": "12 000 DA", "desc": "Dur�e: 24h. D�veloppement Professionnel."},
-                {"title": "PNL Niveau 1", "price": "15 000 DA", "desc": "Dur�e: 24h. Psychologie et communication."}
+                {"title": "Prise de Parole Publique", "price": "9 000 DA", "desc": "Durée: 16h. Soft Skills."},
+                {"title": "Self Marketing", "price": "12 000 DA", "desc": "Durée: 24h. Développement Professionnel."},
+                {"title": "PNL Niveau 1", "price": "15 000 DA", "desc": "Durée: 24h. Psychologie et communication."}
             ],
             "Marketing Digital": [
-                {"title": "Marketing Digital", "price": "15 000 DA", "desc": "Dur�e: 24h. Strat�gies digitales."},
-                {"title": "Community Management", "price": "12 000 DA", "desc": "Dur�e: 24h. Gestion des r�seaux sociaux."}
+                {"title": "Marketing Digital", "price": "15 000 DA", "desc": "Durée: 24h. Stratégies digitales."},
+                {"title": "Community Management", "price": "12 000 DA", "desc": "Durée: 24h. Gestion des réseaux sociaux."}
             ],
             "Langues": [
-                {"title": "Anglais", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."},
-                {"title": "Fran�ais", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."},
-                {"title": "Espagnol", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."},
-                {"title": "Italien", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."},
-                {"title": "Allemand", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."},
-                {"title": "Russe", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."},
-                {"title": "Arabe", "price": "10 000 DA", "desc": "Dur�e: 40h / niveau. Linguistique."}
+                {"title": "Anglais", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."},
+                {"title": "Français", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."},
+                {"title": "Espagnol", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."},
+                {"title": "Italien", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."},
+                {"title": "Allemand", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."},
+                {"title": "Russe", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."},
+                {"title": "Arabe", "price": "10 000 DA", "desc": "Durée: 40h / niveau. Linguistique."}
             ],
             "Kids Program": [
-                {"title": "Soroban (Calcul Mental)", "price": "9 000 DA", "desc": "D�veloppement Mental. Par niveau."},
-                {"title": "Jeu d'�checs / Rubik's Cube", "price": "3 000 DA / mois", "desc": "Logique & Strat�gie."},
+                {"title": "Soroban (Calcul Mental)", "price": "9 000 DA", "desc": "Développement Mental. Par niveau."},
+                {"title": "Jeu d'échecs / Rubik's Cube", "price": "3 000 DA / mois", "desc": "Logique & Stratégie."},
                 {"title": "Robotique pour Enfants", "price": "12 000 DA", "desc": "Technologie et apprentissage par le jeu."}
             ],
             "Formations Divers": [
-                {"title": "Canva / Illustrator / Photoshop", "price": "6 000 DA", "desc": "Dur�e: 16h / logiciel. Design Graphique."},
-                {"title": "R � Statistiques / LaTeX / Matlab", "price": "4 000 DA", "desc": "Dur�e: 16h � 24h. Statistiques & Calcul."},
-                {"title": "Introduction Photo / Montage Vid�o", "price": "6 000 DA", "desc": "Dur�e: 16h / module. Audiovisuel."}
+                {"title": "Canva / Illustrator / Photoshop", "price": "6 000 DA", "desc": "Durée: 16h / logiciel. Design Graphique."},
+                {"title": "R - Statistiques / LaTeX / Matlab", "price": "4 000 DA", "desc": "Durée: 16h - 24h. Statistiques & Calcul."},
+                {"title": "Introduction Photo / Montage Vidéo", "price": "6 000 DA", "desc": "Durée: 16h / module. Audiovisuel."}
             ]
         }
         

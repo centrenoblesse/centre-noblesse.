@@ -381,6 +381,25 @@
   animation: modalSlideIn 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+/* Fix for Admin Gateway Modal Distortion */
+.admin-gateway .modal-box {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) scale(0.95) !important;
+  z-index: 9999 !important;
+  transition: all 0.4s ease-in-out !important;
+  animation: none !important; /* Disable conflicting keyframes */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.admin-gateway.open .modal-box {
+  transform: translate(-50%, -50%) scale(1) !important;
+  opacity: 1;
+  pointer-events: all;
+}
+
 @keyframes modalSlideIn {
   from {
     opacity: 0;
