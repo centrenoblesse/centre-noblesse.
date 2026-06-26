@@ -16,6 +16,9 @@
        Click Spark, Star Border, Magic Bento, Pill Nav) -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}?v={{ config.ASSET_VERSION }}">
 
+  <!-- Premium CDN Fallback for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     /* ─── DESIGN TOKENS ─────────────────────────────────── */
     :root {
@@ -1786,19 +1789,22 @@
 
 
   <script>
-    // ╔�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?╗
+    // ╔══════════════════════════════════════════════════════════╗
     // ║  EMAILJS CONFIG — Replace these 3 values with yours    ║
     // ║  Get them from https://www.emailjs.com/                ║
-    // ╚�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+    // ╚══════════════════════════════════════════════════════════╝
+    const EMAILJS_PUBLIC_KEY = '2YkncqeoJe8XrOWjf';
+    const EMAILJS_SERVICE_ID = 'service_qlx3355';
+    const EMAILJS_TEMPLATE_ID = 'template_j4gj88m';
 
   </script>
 </head>
 
 <body>
 
-  <!-- � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � 
+  <!-- ══════════════════════════════════
      NAVIGATION
-� � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � �  -->
+══════════════════════════════════ -->
   <header class="site-header" id="site-header">
     <div class="container">
       <div class="nav-inner">
@@ -1838,10 +1844,10 @@
       <div class="logo-name" style="color:var(--white)">Centre Noblesse</div>
       <button class="mob-close" id="mob-close" aria-label="Fermer">&times;</button>
     </div>
-    <a href="{{ url_for('public.index') }}" class="mob-link" data-mob-nav>� � Accueil</a>
+    <a href="{{ url_for('public.index') }}" class="mob-link" data-mob-nav>🏠 Accueil</a>
     <a href="{{ url_for('public.categories') }}" class="mob-link" data-mob-nav>📚 Nos Cours</a>
-    <a href="#packs" class="mob-link" data-mob-nav>� Nos Packs</a>
-    <a href="#contact" class="mob-link" data-mob-nav>� Contact</a>
+    <a href="#packs" class="mob-link" data-mob-nav>⭐ Nos Packs</a>
+    <a href="#contact" class="mob-link" data-mob-nav>📍 Contact</a>
     <div class="mob-footer">
       <button class="btn btn-red" data-open-modal="register" data-mob-nav style="justify-content:center">S'inscrire
         maintenant</button>
@@ -1852,9 +1858,9 @@
 
   <main id="main">
 
-    <!-- � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � 
+    <!-- ══════════════════════════════════
        HERO
-  � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � �  -->
+  ══════════════════════════════════ -->
     <section class="hero" id="home" aria-labelledby="hero-name">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-grid" aria-hidden="true"></div>
@@ -1870,8 +1876,8 @@
             <span class="line accent cn-blur-target" data-blur-delay="110" data-blur-dir="top">Noblesse School</span>
           </h1>
           <p class="hero-desc cn-split-target" data-split-delay="40">
-            Un �cosyst�me �ducatif d'�lite o� l'excellence p�dagogique rencontre la technologie moderne.🌐 Langues,
-            Informatique, Intelligence Artificielle, Marketing et programmes Enfants � fa�onnons ensemble votre
+            Un écosystème éducatif d'élite où l'excellence pédagogique rencontre la technologie moderne.🌐 Langues,
+            Informatique, Intelligence Artificielle, Marketing et programmes Enfants — façonnons ensemble votre
             avenir
             professionnel.
           </p>
@@ -1911,28 +1917,28 @@
     <div class="value-strip" aria-hidden="true">
       <div class="strip-track">
         <!-- duplicate for seamless loop -->
-        <span class="strip-item"><span class="strip-dot">� </span> Cours de🌐 Langues</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Développement Web</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Intelligence Artificielle</span>
-        <span class="strip-item"><span class="strip-dot">� </span>🎯 Kids Program</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Photographie &amp; Vidéo</span>
-        <span class="strip-item"><span class="strip-dot">� </span>🎤 Formation de Formateurs</span>
-        <span class="strip-item"><span class="strip-dot">� </span> PNL &amp; Marketing</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Cyber Sécurité</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Cours de🌐 Langues</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Développement Web</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Intelligence Artificielle</span>
-        <span class="strip-item"><span class="strip-dot">� </span>🎯 Kids Program</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Photographie &amp; Vidéo</span>
-        <span class="strip-item"><span class="strip-dot">� </span>🎤 Formation de Formateurs</span>
-        <span class="strip-item"><span class="strip-dot">� </span> PNL &amp; Marketing</span>
-        <span class="strip-item"><span class="strip-dot">� </span> Cyber Sécurité</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cours de🌐 Langues</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Développement Web</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Intelligence Artificielle</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Kids Program</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Photographie &amp; Vidéo</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Formation de Formateurs</span>
+        <span class="strip-item"><span class="strip-dot">●</span> PNL &amp; Marketing</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cyber Sécurité</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cours de🌐 Langues</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Développement Web</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Intelligence Artificielle</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Kids Program</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Photographie &amp; Vidéo</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Formation de Formateurs</span>
+        <span class="strip-item"><span class="strip-dot">●</span> PNL &amp; Marketing</span>
+        <span class="strip-item"><span class="strip-dot">●</span> Cyber Sécurité</span>
       </div>
     </div>
 
-    <!-- � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � 
+    <!-- ══════════════════════════════════
        ABOUT / INTRO
-  � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � � �  -->
+  ══════════════════════════════════ -->
     <section class="about-section" id="about" aria-labelledby="about-title">
       <div class="container">
         <div class="about-grid">
@@ -1946,7 +1952,7 @@
             </p>
             <div class="about-pillars">
               <div class="pillar">
-                <div class="pillar-icon pillar-icon--red">👨� � �</div>
+                <div class="pillar-icon pillar-icon--red">👨‍🏫</div>
                 <div>
                   <div class="pillar-title">Formateurs Certifiés</div>
                   <div class="pillar-desc">Experts sectoriels avec des années d'expérience terrain et des
@@ -1963,7 +1969,7 @@
                 </div>
               </div>
               <div class="pillar">
-                <div class="pillar-icon pillar-icon--gold">� �</div>
+                <div class="pillar-icon pillar-icon--gold">🏆</div>
                 <div>
                   <div class="pillar-title">Certificats Officiels Remis</div>
                   <div class="pillar-desc">Un certificat valorisable reconnu est délivré à l'issue de chaque
@@ -1998,9 +2004,9 @@
       </div>
     </section>
 
-    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+    <!-- ══════════════════════════════════
        STATS PANEL
-  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+  ══════════════════════════════════ -->
     <section class="stats-section" id="stats" aria-labelledby="stats-title">
       <div class="stats-bg-red" aria-hidden="true"></div>
       <div class="stats-bg-blue" aria-hidden="true"></div>
@@ -2023,14 +2029,14 @@
             <div class="stat-label">Formations &amp; Cours Disponibles</div>
           </article>
           <article class="stat-card reveal reveal-delay-2" style="--glow-color: 102, 192, 255">
-            <div class="stat-icon" aria-hidden="true">�?</div>
+            <div class="stat-icon" aria-hidden="true">🌐</div>
             <div class="stat-num">
               <span class="count-up" data-target="7">0</span>
             </div>
             <div class="stat-label">Langues Étrangères Enseignées</div>
           </article>
           <article class="stat-card reveal reveal-delay-3">
-            <div class="stat-icon" aria-hidden="true">�?�</div>
+            <div class="stat-icon" aria-hidden="true">🏆</div>
             <div class="stat-num">
               <span class="count-up" data-target="500">0</span>
               <span class="suffix">+</span>
@@ -2049,9 +2055,9 @@
       </div>
     </section>
 
-    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+    <!-- ══════════════════════════════════
        COURSES GATEWAY
-  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+  ══════════════════════════════════ -->
     <section class="gateway-section" id="courses" aria-labelledby="gateway-title">
       <div class="container">
         <div class="gateway-inner">
@@ -2068,10 +2074,10 @@
             <div class="gateway-categories">
               <span class="category-chip reveal reveal-delay-1">💻💻 Cours Informatique</span>
               <span class="category-chip reveal reveal-delay-2">🎤🎤 Formation de Formateurs</span>
-              <span class="category-chip reveal reveal-delay-3">�🌐 Langues</span>
+              <span class="category-chip">🌐 Langues</span>
               <span class="category-chip reveal reveal-delay-4">🤖🤖 IA &amp; Cybersécurité</span>
               <span class="category-chip reveal reveal-delay-1">🎯🎯 Kids Program</span>
-              <span class="category-chip reveal reveal-delay-2">🛠�🛠️ Formation Divers</span>
+              <span class="category-chip">🛠️ Formation Divers</span>
             </div>
             <div class="gateway-cta">
               <a href="{{ url_for('public.categories') }}" class="btn-explore" id="explore-catalog-btn">
@@ -2096,7 +2102,7 @@
               <div class="gw-count">12+ formations</div>
             </div>
             <div class="gw-card">
-              <div class="gw-icon">�?</div>
+              <div class="gw-icon">🌐</div>
               <div class="gw-name">Langues</div>
               <div class="gw-count">7 langues</div>
             </div>
@@ -2117,7 +2123,7 @@
             </div>
             <div class="gw-card"
               style="background:linear-gradient(135deg,var(--red) 0%,#8B0008 100%);border-color:transparent">
-              <div class="gw-icon">�?</div>
+              <div class="gw-icon">⭐</div>
               <div class="gw-name" style="color:var(--white)">Voir tout →</div>
               <div class="gw-count" style="color:rgba(255,255,255,.65)">50+ formations</div>
             </div>
@@ -2126,9 +2132,9 @@
       </div>
     </section>
 
-    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+    <!-- ══════════════════════════════════
        PACKS SECTION
-  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+  ══════════════════════════════════ -->
     <section class="packs-section" id="packs" aria-labelledby="packs-title">
       <div class="packs-section-bg" aria-hidden="true"></div>
       <div class="container">
@@ -2171,9 +2177,9 @@
       </div>
     </section>
 
-    <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+    <!-- ══════════════════════════════════
        CONTACT
-  �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+  ══════════════════════════════════ -->
     <section class="contact-strip" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="reveal" style="margin-bottom:2.5rem">
@@ -2192,7 +2198,7 @@
               </div>
             </div>
             <div class="contact-item">
-              <div class="c-icon">�?</div>
+              <div class="c-icon">📍</div>
               <span>Noblesse School · Algérie</span>
             </div>
             <div class="social-row">
@@ -2256,9 +2262,9 @@
     </svg>
   </button>
 
-  <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+  <!-- ══════════════════════════════════
      REGISTER MODAL
-�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+══════════════════════════════════ -->
   <div class="modal-backdrop" id="modal-register" role="dialog" aria-modal="true" aria-labelledby="reg-title"
     aria-describedby="reg-sub">
     <div class="modal-box">
@@ -2295,7 +2301,7 @@
           <div class="form-group">
             <label class="form-label" for="r-course">Formation sélectionnée <span class="req">*</span></label>
             <select class="form-control" id="r-course" name="course" required aria-describedby="r-course-e">
-              <option value="" disabled selected>� Chargement des formations... �</option>
+              <option value="" disabled selected>— Chargement des formation —</option>
             </select>
             <span class="form-err-msg" id="r-course-e">Veuillez sélectionner une formation.</span>
           </div>
@@ -2336,9 +2342,9 @@
     </div>
   </div>
 
-  <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+  <!-- ══════════════════════════════════
      APPOINTMENT MODAL
-�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+══════════════════════════════════ -->
   <div class="modal-backdrop" id="modal-appointment" role="dialog" aria-modal="true" aria-labelledby="app-title">
     <div class="modal-box">
       <div class="modal-head" style="background:linear-gradient(135deg,#0D1730 0%,var(--dark-4) 100%)">
@@ -2402,9 +2408,9 @@
     </div>
   </div>
 
-  <!-- �?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?
+  <!-- ══════════════════════════════════
      JAVASCRIPT
-�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�? -->
+══════════════════════════════════ -->
   <script>
     (function () {
       'use strict';
@@ -2538,14 +2544,14 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
           });
-          if (!res.ok) throw new Error('Erreur r�seau');
+          if (!res.ok) throw new Error('Failed to send');
 
           this.style.display = 'none';
           const succ = $('#reg-success');
-          succ.querySelector('.success-body').innerHTML = 'Votre demande a �t� enregistr�e avec succ�s dans notre syst�me. Notre �quipe vous contactera tr�s prochainement.';
+          succ.querySelector('.success-body').innerHTML = 'Votre demande a été envoyée avec succès dans notre système. Notre équipe vous contactera très prochainement.';
           succ.classList.add('show');
         } catch (error) {
-          alert("Une erreur s'est produite lors de l'envoi. Veuillez r�essayer plus tard.");
+          alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
           btn.innerHTML = originalText;
           btn.disabled = false;
         }
@@ -2575,20 +2581,20 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
           });
-          if (!res.ok) throw new Error('Erreur r�seau');
+          if (!res.ok) throw new Error('Failed to send');
 
           this.style.display = 'none';
           const succ = $('#app-success');
-          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a �t� enregistr�. Nous vous contacterons pour confirmer.';
+          succ.querySelector('.success-body').innerHTML = 'Votre rendez-vous a été envoyé. Nous vous contacterons pour confirmer.';
           succ.classList.add('show');
         } catch (error) {
-          alert("Une erreur s'est produite lors de l'envoi. Veuillez r�essayer plus tard.");
+          alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
           btn.innerHTML = originalText;
           btn.disabled = false;
         }
       });
 
-      /* DYNAMIC CATALOG FETCH � populates registration dropdown and packs from CMS */
+      /* DYNAMIC CATALOG FETCH — populates registration dropdown and packs from CMS */
       async function fetchCatalogData() {
         const res = await fetch('/api/catalog?t=' + Date.now(), { cache: 'no-store' });
         if (!res.ok) throw new Error('Network error');
@@ -2596,48 +2602,31 @@
       }
 
       async function loadCatalog() {
-        const sel = document.getElementById('r-course');
-        if (!sel) return;
-
-        // Show loading state
-        sel.innerHTML = '<option value="" disabled selected>� Chargement des formations... �</option>';
-
         try {
           const { categories, services } = await fetchCatalogData();
-
-          // Build a map of category_id -> category name
-          const catMap = {};
-          categories.forEach(c => { catMap[c.id] = c.name; });
-
-          // Group services by category
-          const grouped = {};
-          services.forEach(s => {
-            const catName = catMap[s.category_id] || 'Autres';
-            if (!grouped[catName]) grouped[catName] = [];
-            grouped[catName].push(s);
-          });
-
-          // Build options HTML
-          let html = '<option value="" disabled selected>� Choisissez une formation �</option>';
-          for (const [catName, srvList] of Object.entries(grouped)) {
-            html += `<optgroup label="${catName}">`;
-            srvList.forEach(s => {
-              const label = s.price ? `${s.title} (${s.price})` : s.title;
-              html += `<option value="${label}">${label}</option>`;
+          
+          const sel = $('#r-course');
+          if (sel) {
+            const grouped = {};
+            services.forEach(s => {
+              const catName = s.category?.name || 'Formation';
+              if (!grouped[catName]) grouped[catName] = [];
+              grouped[catName].push(s);
             });
-            html += '</optgroup>';
+            
+            let html = '<option value="" disabled selected>— Choisissez une formation —</option>';
+            for (const [catName, srvList] of Object.entries(grouped)) {
+              html += `<optgroup label="${catName}">`;
+              srvList.forEach(s => {
+                const label = s.price ? `${s.title} (${s.price})` : s.title;
+                html += `<option value="${label}">${label}</option>`;
+              });
+              html += '</optgroup>';
+            }
+            sel.innerHTML = html;
           }
-          sel.innerHTML = html;
-        } catch (err) {
-          console.warn('Catalog fetch failed, using fallback:', err);
-          sel.innerHTML = '<option value="" disabled selected>� Erreur de chargement �</option>';
-        }
-      }
 
-      async function refreshPacksFromAPI() {
-        try {
-          const { categories, services } = await fetchCatalogData();
-          const grid = document.querySelector('.packs-grid');
+          const grid = $('.packs-grid');
           if (!grid) return;
 
           const catMap = {};
@@ -2697,7 +2686,7 @@
       }
 
       // Fetch on load
-      document.addEventListener('DOMContentLoaded', refreshPacksFromAPI);
+      document.addEventListener('DOMContentLoaded', loadCatalog);
 
       // Patch openModal to trigger catalog load on register modal
       const _origOpenModal = openModal;
@@ -2734,9 +2723,9 @@
     })();
   </script>
 
-  <!-- ???????????????????????????????????????????????????????????????
+  <!-- ══════════════════════════════════
      ADMIN GATEWAY MODAL
-??????????????????????????????????????????????????????????????? -->
+══════════════════════════════════ -->
   <div class="modal-backdrop admin-gateway" id="modal-admin" role="dialog" aria-modal="true"
     aria-labelledby="admin-title">
     <div class="modal-box cyberpunk-box">
@@ -2744,8 +2733,8 @@
         <div>
           <div class="modal-head-icon" aria-hidden="true"
             style="background:var(--red);color:var(--white);border:none;box-shadow:0 0 15px var(--red-glow)">?</div>
-          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Acc�s R�serv�</h2>
-          <p class="modal-sub" style="color:var(--muted)">Gateway s�curis�e Noblesse CMS</p>
+          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Accès Réservé</h2>
+          <p class="modal-sub" style="color:var(--muted)">Gateway sécurisée Noblesse CMS</p>
         </div>
         <button class="modal-close-btn" data-close-modal="admin" aria-label="Fermer"
           style="color:var(--white);border-color:rgba(255,255,255,0.1)">&times;</button>
@@ -2767,7 +2756,7 @@
             <label class="form-label" for="a-password" style="color:var(--white)">Access Code <span
                 class="req">*</span></label>
             <input class="form-control" type="password" id="a-password" name="password" required
-              placeholder="������������"
+              placeholder="••••••••••••"
               style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
           </div>
           <div class="form-submit" style="margin-top: 2rem">
@@ -2785,7 +2774,7 @@
     </div>
   </div>
 
-  <!-- Custom Animations JS � all 7 components (Blur Text, Split Text, Scroll Reveal,
+  <!-- Custom Animations JS — all 7 components (Blur Text, Split Text, Scroll Reveal,
        Click Spark, Star Border, Magic Bento, Pill Nav) -->
   <script src="{{ url_for('static', filename='js/animations.js') }}?v=4"></script>
 </body>

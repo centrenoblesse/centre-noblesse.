@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Catalogue complet des formations professionnelles de Centre Noblesse School.">
-  <title>Nos Formations � Centre Noblesse School</title>
+  <title>Nos Formations — Centre Noblesse School</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -436,6 +436,10 @@
     .footer-links a:hover { color:var(--blue); }
   </style>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}?v=4">
+  
+  <!-- Premium CDN Fallback for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 
@@ -445,7 +449,7 @@
 <header class="site-header" id="site-header">
   <div class="container">
     <div class="nav-inner">
-      <a href="{{ url_for('public.index') }}" class="logo" aria-label="Centre Noblesse School � Accueil">
+      <a href="{{ url_for('public.index') }}" class="logo" aria-label="Centre Noblesse School – Accueil">
         <div class="logo-icon" aria-hidden="true" style="background: transparent; border: none; box-shadow: none;">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Centre Noblesse" style="height: 48px; width: auto; display: block; object-fit: contain;">
           </div>
@@ -494,7 +498,7 @@
   <header class="page-header">
     <div class="container page-header-inner reveal">
       <h1 class="ph-title">Catalogue de Formations</h1>
-      <p class="ph-desc">Parcourez nos cat�gories et trouvez la formation id�ale pour propulser votre carri�re ou d�velopper de nouvelles comp�tences.</p>
+      <p class="ph-desc">Parcourez nos catégories et trouvez la formation idéale pour propulser votre carrière ou développer de nouvelles compétences.</p>
     </div>
   </header>
 
@@ -504,7 +508,7 @@
   <section class="catalog-section container">
     
     <!-- CATEGORY TABS -->
-    <div class="cat-selector reveal reveal-delay-1" role="tablist" aria-label="Cat�gories de formations">
+    <div class="cat-selector reveal reveal-delay-1" role="tablist" aria-label="Catégories de formations">
 {% for category in categories %}
       <button class="cat-btn {% if loop.first %}active{% endif %}" role="tab" aria-selected="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="cat-{{ category.id }}" id="tab-{{ category.id }}" data-target="cat-{{ category.id }}">
         <div class="cat-btn-icon" aria-hidden="true">?</div>
@@ -539,7 +543,7 @@
       </div>
     </div>
 {% else %}
-    <p style="text-align: center; width: 100%; color: white;">Aucune cat�gorie disponible pour le moment.</p>
+    <p style="text-align: center; width: 100%; color: white;">Aucune cass="corie disponible pour le moment.</p>
 {% endfor %}
     </section>
 </main>
@@ -552,8 +556,8 @@
     <div class="modal-head">
       <div>
         <div class="modal-head-icon" aria-hidden="true">?</div>
-        <h2 class="modal-title" id="reg-title">Inscription � une Formation</h2>
-        <p class="modal-sub" id="reg-sub">Notre �quipe vous recontactera sous 24h pour confirmer.</p>
+        <h2 class="modal-title" id="reg-title">Inscription à une Formation</h2>
+        <p class="modal-sub" id="reg-sub">Notre équipe vous recontactera sous 24h pour confirmer.</p>
       </div>
       <button class="modal-close-btn" data-close-modal="register" aria-label="Fermer">&times;</button>
     </div>
@@ -562,13 +566,13 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="r-name">Nom complet <span class="req">*</span></label>
-            <input class="form-control" type="text" id="r-name" required minlength="2" autocomplete="name" placeholder="Votre nom et pr�nom" aria-describedby="r-name-e">
+            <input class="form-control" type="text" id="r-name" required minlength="2" autocomplete="name" placeholder="Votre nom et prénom" aria-describedby="r-name-e">
             <span class="form-err-msg" id="r-name-e">Nom complet requis.</span>
           </div>
           <div class="form-group">
-            <label class="form-label" for="r-phone">T�l�phone <span class="req">*</span></label>
+            <label class="form-label" for="r-phone">Téléphone <span class="req">*</span></label>
             <input class="form-control" type="tel" id="r-phone" required pattern="[0-9+\s]{9,15}" autocomplete="tel" placeholder="0xxx xx xx xx" aria-describedby="r-phone-e">
-            <span class="form-err-msg" id="r-phone-e">Num�ro invalide.</span>
+            <span class="form-err-msg" id="r-phone-e">Numéro invalide.</span>
           </div>
         </div>
         <div class="form-group">
@@ -577,10 +581,10 @@
           <span class="form-err-msg" id="r-email-e">Email invalide.</span>
         </div>
         <div class="form-group">
-          <label class="form-label" for="r-course">Formation s�lectionn�e <span class="req">*</span></label>
+          <label class="form-label" for="r-course">Formation sélectionnée <span class="req">*</span></label>
           <!-- Using text input instead of select since it's prefilled from buttons, user can edit if needed -->
           <input class="form-control" type="text" id="r-course" required readonly style="background:var(--light); cursor:default;" aria-describedby="r-course-e">
-          <span class="form-err-msg" id="r-course-e">Veuillez s�lectionner une formation.</span>
+          <span class="form-err-msg" id="r-course-e">Veuillez sélectionner une formation.</span>
         </div>
         <div class="form-submit">
           <button type="submit" class="btn btn-red">
@@ -592,8 +596,8 @@
       </form>
       <div class="form-success-state" id="reg-success" role="status" aria-live="polite">
         <div class="success-circle" aria-hidden="true">?</div>
-        <div class="success-title">Demande Envoy�e !</div>
-        <p class="success-body">Votre client email s'ouvre avec le r�capitulatif. Si besoin, contactez-nous au <a href="tel:+213792008534" style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
+        <div class="success-title">Demande Envoyée !</div>
+        <p class="success-body">Votre client email s'ouvre avec le récapitulatif. Si besoin, contactez-nous au <a href="tel:+213792008534" style="color:var(--red);font-weight:700">+213 792 008 534</a>.</p>
         <button class="btn btn-red" data-close-modal="register">Fermer</button>
       </div>
     </div>
@@ -604,7 +608,7 @@
 <footer class="site-footer" role="contentinfo">
   <div class="container">
     <div class="footer-inner">
-      <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits r�serv�s.</p>
+      <p class="footer-copy">&copy; 2026 Centre Noblesse School. Tous droits réservés.</p>
       <nav class="footer-links" aria-label="Pied de page">
         <a href="{{ url_for('public.categories') }}">Nos Cours</a>
         <a href="{{ url_for('public.index') }}#packs">Packs</a>
@@ -765,13 +769,13 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-    if (!res.ok) throw new Error('Erreur r�seau');
+    if (!res.ok) throw new Error('Network response was not ok');
     this.style.display='none';
       const succ = $('#reg-success');
-      succ.querySelector('.success-body').innerHTML = 'Votre demande a �t� envoy�e avec succ�s. Notre �quipe vous contactera tr�s prochainement.';
+      succ.querySelector('.success-body').innerHTML = 'Votre demande a été envoyée avec succès. Notre équipe vous contactera très prochainement.';
       succ.classList.add('show');
     } catch (error) {
-      alert("Une erreur s'est produite lors de l'envoi. Veuillez r�essayer plus tard.");
+      alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer plus tard.");
       btn.innerHTML = originalText;
       btn.disabled = false;
     }
@@ -787,8 +791,8 @@
       <div class="modal-head">
         <div>
           <div class="modal-head-icon" aria-hidden="true" style="background:var(--red);color:var(--white);border:none;box-shadow:0 0 15px var(--red-glow)">?</div>
-          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Acc�s R�serv�</h2>
-          <p class="modal-sub" style="color:var(--muted)">Gateway s�curis�e Noblesse CMS</p>
+          <h2 class="modal-title" id="admin-title" style="color:var(--white)">Accès Réservé</h2>
+          <p class="modal-sub" style="color:var(--muted)">Gateway sécurisée Noblesse CMS</p>
         </div>
         <button class="modal-close-btn" data-close-modal="admin" aria-label="Fermer" style="color:var(--white);border-color:rgba(255,255,255,0.1)">&times;</button>
       </div>
@@ -802,7 +806,7 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="a-password" style="color:var(--white)">Access Code <span class="req">*</span></label>
-            <input class="form-control" type="password" id="a-password" name="password" required placeholder="������������" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
+            <input class="form-control" type="password" id="a-password" name="password" required placeholder="••••••••••••" style="background:var(--dark-2);color:var(--white);border-color:rgba(255,255,255,0.1)">
           </div>
           <div class="form-submit" style="margin-top: 2rem">
             <button type="submit" class="btn btn-red" style="width:100%;box-shadow: 0 0 20px var(--red-glow)">
