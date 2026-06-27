@@ -63,12 +63,72 @@ def seed_data():
                     description=s['desc'],
                     price=s['price'],
                     category_id=cat.id,
-                    status='published'
+                    status='published',
+                    is_pack=False
                 )
                 db.session.add(srv)
                 
+        # --- Add Premium Packs ---
+        packs_data = [
+            {
+                "title": "Pack Complet Développement Web",
+                "price": "50 000 DA",
+                "desc": "UI/UX, Front-End, Back-End, Base de Données et WordPress. Le parcours intégral pour devenir développeur web.",
+                "badge_label": "MEILLEURE VENTE",
+                "original_price": "62 000 DA",
+                "savings": "Économisez 12 000 DA",
+                "duration": "100h",
+                "included_courses": "UI/UX Design (24h)\nFront-End (24h)\nBack-End (24h)\nBase de Données (24h)\nSite WordPress (20h)"
+            },
+            {
+                "title": "Pack Formation de Formateurs",
+                "price": "35 000 DA",
+                "desc": "Prise de parole, Self Marketing, Informatique et PNL Niveau 1 — devenez un formateur certifié.",
+                "badge_label": "FORMATEURS & PNL",
+                "original_price": "42 000 DA",
+                "savings": "Économisez 7 000 DA",
+                "duration": "60h",
+                "included_courses": "Prise de Parole Publique (16h)\nSelf Marketing (24h)\nInitiation Informatique (16h)\nPNL Niveau 1 (24h)"
+            },
+            {
+                "title": "Pack Complet Photographie",
+                "price": "37 000 DA",
+                "desc": "Maîtrisez la photographie et le montage vidéo de A à Z avec stage professionnel inclus.",
+                "badge_label": "CRÉATIF",
+                "original_price": "45 000 DA",
+                "savings": "Économisez 8 000 DA",
+                "duration": "80h",
+                "included_courses": "Introduction à la Photo (16h)\nMontage Vidéo (16h)\nInitiation + Stage Photo (72h)\nStage professionnel inclus"
+            },
+            {
+                "title": "Pack Complet Kids Program",
+                "price": "24 000 DA",
+                "desc": "Soroban, Échecs, Rubik's Cube et Robotique — un développement complet pour vos enfants.",
+                "badge_label": "KIDS PROGRAM",
+                "original_price": "30 000 DA",
+                "savings": "Économisez 6 000 DA",
+                "duration": "",
+                "included_courses": "Soroban — Calcul Mental\nJeu d'Échecs (3 000 DA/mois)\nRubik's Cube (3 000 DA/mois)\nRobotique Enfants"
+            }
+        ]
+
+        for p in packs_data:
+            pack_srv = Service(
+                title=p['title'],
+                description=p['desc'],
+                price=p['price'],
+                status='published',
+                is_pack=True,
+                badge_label=p['badge_label'],
+                original_price=p['original_price'],
+                savings=p['savings'],
+                duration=p['duration'],
+                included_courses=p['included_courses']
+            )
+            db.session.add(pack_srv)
+
         db.session.commit()
-        print("Database seeded with original content!")
+        print("Database seeded with original content + Premium Packs!")
 
 if __name__ == '__main__':
     seed_data()

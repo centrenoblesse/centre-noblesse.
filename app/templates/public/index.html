@@ -2150,20 +2150,42 @@
         </div>
 
         <div class="packs-grid">
-          {% for srv in services %}
+          {% for srv in services if srv.is_pack %}
           <article class="pack-card reveal reveal-delay-1" aria-label="{{ srv.title }}">
             <div class="pack-glow pack-glow--blue" aria-hidden="true"></div>
             <div class="pack-top">
-              <div class="pack-badge pack-badge--blue">{{ srv.category.name if srv.category else 'Formation' }}</div>
+              <div class="pack-badge pack-badge--blue">{{ srv.badge_label if srv.badge_label else 'PACK COMPLET' }}</div>
               <div class="pack-name">{{ srv.title }}</div>
               <div class="pack-desc">{{ srv.description }}</div>
+              
+              {% if srv.included_courses %}
+              <ul style="margin-top: 1rem; list-style: none; font-size: 0.9rem; color: var(--muted); padding: 0;">
+                {% set courses = srv.included_courses.split('\n') %}
+                {% for course in courses %}
+                  {% if course.strip() %}
+                    <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 8px;">
+                      <span style="color: var(--blue);">✓</span> {{ course.strip() }}
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+              {% endif %}
             </div>
+            
             <div class="pack-price-row">
               <div>
                 <div class="pack-price">{{ srv.price }}</div>
+                {% if srv.original_price %}
+                  <div style="text-decoration: line-through; color: var(--muted); font-size: 0.85rem; margin-top: 2px;">{{ srv.original_price }}</div>
+                {% endif %}
+                {% if srv.savings or srv.duration %}
+                  <div style="color: var(--blue); font-size: 0.8rem; font-weight: 600; margin-top: 4px;">
+                    {{ srv.savings }}{% if srv.savings and srv.duration %} · {% endif %}{{ srv.duration }}
+                  </div>
+                {% endif %}
               </div>
               <button class="btn-pack btn-pack--blue" data-course="{{ srv.title }}" data-open-modal="register">
-                S'inscrire ?
+                S'inscrire →
               </button>
             </div>
           </article>
@@ -2601,56 +2623,58 @@
         return await res.json();
       }
 
-      async function loadCatalog() {
+      async function fetchPacksData() {
+        const res = await fetch('/api/packs?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('Network error');
+        return await res.json();
+      }
+
+      async function loadPacks() {
         try {
-          const { categories, services } = await fetchCatalogData();
-          
-          const sel = $('#r-course');
-          if (sel) {
-            const grouped = {};
-            services.forEach(s => {
-              const catName = s.category?.name || 'Formation';
-              if (!grouped[catName]) grouped[catName] = [];
-              grouped[catName].push(s);
-            });
-            
-            let html = '<option value="" disabled selected>— Choisissez une formation —</option>';
-            for (const [catName, srvList] of Object.entries(grouped)) {
-              html += `<optgroup label="${catName}">`;
-              srvList.forEach(s => {
-                const label = s.price ? `${s.title} (${s.price})` : s.title;
-                html += `<option value="${label}">${label}</option>`;
-              });
-              html += '</optgroup>';
-            }
-            sel.innerHTML = html;
-          }
-
+          const { packs } = await fetchPacksData();
           const grid = $('.packs-grid');
-          if (!grid) return;
-
-          const catMap = {};
-          categories.forEach(c => { catMap[c.id] = c.name; });
+          if (!grid || !packs || packs.length === 0) return;
 
           let html = '';
-          services.forEach((srv, i) => {
-            const catName = catMap[srv.category_id] || 'Formation';
+          packs.forEach((srv, i) => {
+            const badgeHtml = srv.badge_label ? srv.badge_label : 'PACK COMPLET';
             const priceHtml = srv.price ? `<div class="pack-price">${srv.price}</div>` : '';
+            const origPriceHtml = srv.original_price ? `<div style="text-decoration: line-through; color: var(--muted); font-size: 0.85rem; margin-top: 2px;">${srv.original_price}</div>` : '';
+            
+            let savingsText = '';
+            if (srv.savings) savingsText += srv.savings;
+            if (srv.savings && srv.duration) savingsText += ' · ';
+            if (srv.duration) savingsText += srv.duration;
+            const savingsHtml = savingsText ? `<div style="color: var(--blue); font-size: 0.8rem; font-weight: 600; margin-top: 4px;">${savingsText}</div>` : '';
+
+            let coursesHtml = '';
+            if (srv.included_courses && srv.included_courses.length > 0) {
+              coursesHtml += `<ul style="margin-top: 1rem; list-style: none; font-size: 0.9rem; color: var(--muted); padding: 0;">`;
+              srv.included_courses.forEach(course => {
+                if (course.trim()) {
+                  coursesHtml += `<li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 8px;"><span style="color: var(--blue);">✓</span> ${course.trim()}</li>`;
+                }
+              });
+              coursesHtml += `</ul>`;
+            }
             
             html += `
               <article class="pack-card reveal is-visible" aria-label="${srv.title}" style="transition-delay: ${0.1 * ((i % 4) + 1)}s">
                 <div class="pack-glow pack-glow--blue" aria-hidden="true"></div>
                 <div class="pack-top">
-                  <div class="pack-badge pack-badge--blue">${catName}</div>
+                  <div class="pack-badge pack-badge--blue">${badgeHtml}</div>
                   <div class="pack-name">${srv.title}</div>
                   <div class="pack-desc">${srv.description || ''}</div>
+                  ${coursesHtml}
                 </div>
                 <div class="pack-price-row">
                   <div>
                     ${priceHtml}
+                    ${origPriceHtml}
+                    ${savingsHtml}
                   </div>
                   <button class="btn-pack btn-pack--blue" data-course="${srv.title}" data-open-modal="register">
-                    S'inscrire ?
+                    S'inscrire →
                   </button>
                 </div>
               </article>
@@ -2685,8 +2709,40 @@
         }
       }
 
+      async function loadCatalog() {
+        try {
+          const { categories, services } = await fetchCatalogData();
+          
+          const sel = $('#r-course');
+          if (sel) {
+            const grouped = {};
+            services.forEach(s => {
+              const catName = s.category?.name || 'Formation';
+              if (!grouped[catName]) grouped[catName] = [];
+              grouped[catName].push(s);
+            });
+            
+            let html = '<option value="" disabled selected>— Choisissez une formation —</option>';
+            for (const [catName, srvList] of Object.entries(grouped)) {
+              html += `<optgroup label="${catName}">`;
+              srvList.forEach(s => {
+                const label = s.price ? `${s.title} (${s.price})` : s.title;
+                html += `<option value="${label}">${label}</option>`;
+              });
+              html += '</optgroup>';
+            }
+            sel.innerHTML = html;
+          }
+        } catch (err) {
+          console.error('Failed to refresh catalog from API:', err);
+        }
+      }
+
       // Fetch on load
-      document.addEventListener('DOMContentLoaded', loadCatalog);
+      document.addEventListener('DOMContentLoaded', () => {
+        loadCatalog();
+        loadPacks();
+      });
 
       // Patch openModal to trigger catalog load on register modal
       const _origOpenModal = openModal;

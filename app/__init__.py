@@ -34,6 +34,8 @@ def create_app():
 
     # Configuration
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-please-change-in-prod')
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
     
     # Render provides postgres:// but SQLAlchemy requires postgresql://
     db_url = os.environ.get('DATABASE_URL', 'sqlite:///noblesse.db')

@@ -32,6 +32,13 @@ class Service(db.Model):
     sort_order = db.Column(db.Integer, default=0)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    # ── Pack-specific fields ──────────────────────────────────
+    is_pack = db.Column(db.Boolean, default=False, nullable=False)
+    badge_label = db.Column(db.String(50), nullable=True)       # e.g. "MEILLEURE VENTE"
+    original_price = db.Column(db.String(50), nullable=True)    # e.g. "62 000 DA"
+    savings = db.Column(db.String(100), nullable=True)          # e.g. "Économisez 12 000 DA"
+    duration = db.Column(db.String(50), nullable=True)          # e.g. "100h"
+    included_courses = db.Column(db.Text, nullable=True)        # newline-separated bullet items
 
 class SiteSetting(db.Model):
     key = db.Column(db.String(100), primary_key=True)

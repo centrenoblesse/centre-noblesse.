@@ -30,8 +30,8 @@ def login():
             return redirect(url_for('admin.dashboard'))
         else:
             if is_ajax:
-                return jsonify({"status": "error", "message": "Identifiants ou code d'acc�s invalides."}), 401
-            flash('Identifiants incorrects. Veuillez v�rifier votre nom et code d\'acc�s.', 'danger')
+                return jsonify({"status": "error", "message": "Identifiants ou code d'accès invalides."}), 401
+            flash('Identifiants incorrects. Veuillez vérifier votre nom et code d\'accès.', 'danger')
 
     return render_template('admin/login.html')
 
@@ -70,7 +70,7 @@ def categories():
             db.session.add(cat)
             db.session.add(ActivityLog(admin_id=current_user.id, action=f"Created category: {name}"))
             db.session.commit()
-            flash('Cat�gorie ajout�e avec succ�s', 'success')
+            flash('Catégorie ajoutée avec succès', 'success')
         return redirect(url_for('admin.categories'))
         
     categories_list = Category.query.all()
@@ -84,7 +84,7 @@ def delete_category(id):
     db.session.delete(cat)
     db.session.add(ActivityLog(admin_id=current_user.id, action=f"Deleted category: {name}"))
     db.session.commit()
-    flash('Cat�gorie supprim�e.', 'success')
+    flash('Catégorie supprimée.', 'success')
     return redirect(url_for('admin.categories'))
 
 @admin_bp.route('/services', methods=['GET', 'POST'])
@@ -101,7 +101,7 @@ def services():
             db.session.add(srv)
             db.session.add(ActivityLog(admin_id=current_user.id, action=f"Created service: {title}"))
             db.session.commit()
-            flash('Service ajout� avec succ�s', 'success')
+            flash('Service ajouté avec succès', 'success')
         return redirect(url_for('admin.services'))
         
     services_list = Service.query.order_by(Service.sort_order).all()
@@ -116,7 +116,7 @@ def delete_service(id):
     db.session.delete(srv)
     db.session.add(ActivityLog(admin_id=current_user.id, action=f"Deleted service: {title}"))
     db.session.commit()
-    flash('Service supprim�.', 'success')
+    flash('Service supprimé.', 'success')
     return redirect(url_for('admin.services'))
 
 @admin_bp.route('/services/toggle/<int:id>', methods=['POST'])
@@ -142,7 +142,7 @@ def settings():
                 db.session.add(setting)
         db.session.add(ActivityLog(admin_id=current_user.id, action="Updated website settings"))
         db.session.commit()
-        flash('Param�tres mis � jour.', 'success')
+        flash('Paramètres mis à jour.', 'success')
         return redirect(url_for('admin.settings'))
         
     settings_list = SiteSetting.query.all()

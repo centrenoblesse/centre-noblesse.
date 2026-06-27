@@ -52,7 +52,7 @@ def appointment():
 def get_catalog():
     from app.models import Category, Service
     categories = Category.query.all()
-    services = Service.query.filter_by(status='published').order_by(Service.sort_order).all()
+    services = Service.query.filter_by(status='published', is_pack=False).order_by(Service.sort_order).all()
     
     cat_data = [{"id": c.id, "name": c.name, "slug": c.slug} for c in categories]
     srv_data = [{
@@ -71,6 +71,32 @@ def get_catalog():
     })
     resp.status_code = 200
     # Force browsers and proxies to never cache the live catalog
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+@api_bp.route('/packs', methods=['GET'])
+def get_packs():
+    from app.models import Service
+    packs = Service.query.filter_by(status='published', is_pack=True).order_by(Service.sort_order).all()
+    
+    pack_data = [{
+        "id": p.id,
+        "title": p.title,
+        "description": p.description,
+        "price": p.price,
+        "status": p.status,
+        "badge_label": p.badge_label,
+        "original_price": p.original_price,
+        "savings": p.savings,
+        "duration": p.duration,
+        "included_courses": p.included_courses.split('\n') if p.included_courses else [],
+        "category_id": p.category_id
+    } for p in packs]
+
+    resp = jsonify({"packs": pack_data})
+    resp.status_code = 200
     resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'

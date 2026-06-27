@@ -1,0 +1,10 @@
+import StarBorder from './StarBorder'
+  
+<StarBorder
+  as="button"
+  className="custom-class"
+  color="magenta"
+  speed="5s"
+>
+  // content
+</StarBorder>
