@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     /* ??? DESIGN TOKENS ??????????????????????????????????? */
@@ -508,10 +509,24 @@
   <section class="catalog-section container">
     
     <!-- CATEGORY TABS -->
+    {% set icon_map = {
+      'Informatique': 'fa-solid fa-laptop-code',
+      'Formation de Formateurs & PNL': 'fa-solid fa-microphone-lines',
+      'Marketing Digital': 'fa-solid fa-bullhorn',
+      'Langues': 'fa-solid fa-language',
+      'Kids Program': 'fa-solid fa-child-reaching',
+      'Soutien Scolaire': 'fa-solid fa-graduation-cap',
+      'Management & RH': 'fa-solid fa-users-gear',
+      'Bureautique': 'fa-solid fa-file-word',
+      'Beauté & Esthétique': 'fa-solid fa-spa',
+      'Cuisine & Pâtisserie': 'fa-solid fa-utensils',
+      'Design & Photographie': 'fa-solid fa-camera-retro',
+      'Formation Métiers': 'fa-solid fa-hammer'
+    } %}
     <div class="cat-selector reveal reveal-delay-1" role="tablist" aria-label="Catégories de formations">
 {% for category in categories %}
       <button class="cat-btn {% if loop.first %}active{% endif %}" role="tab" aria-selected="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="cat-{{ category.id }}" id="tab-{{ category.id }}" data-target="cat-{{ category.id }}">
-        <div class="cat-btn-icon" aria-hidden="true">?</div>
+        <div class="cat-btn-icon" aria-hidden="true"><i class="{{ icon_map.get(category.name, 'fa-solid fa-bookmark') }}"></i></div>
         <div class="cat-btn-title">{{ category.name }}</div>
       </button>
 {% endfor %}
@@ -521,7 +536,7 @@
 {% for category in categories %}
     <div class="cat-panel {% if loop.first %}active{% endif %}" id="cat-{{ category.id }}" role="tabpanel" aria-labelledby="tab-{{ category.id }}">
       <div class="panel-header">
-        <div class="panel-icon">?</div>
+        <div class="panel-icon"><i class="{{ icon_map.get(category.name, 'fa-solid fa-bookmark') }}" style="color: var(--blue);"></i></div>
         <h2 class="panel-title">{{ category.name }}</h2>
       </div>
       <div class="courses-grid">

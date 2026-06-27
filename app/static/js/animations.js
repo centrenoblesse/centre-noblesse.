@@ -641,37 +641,19 @@
     const logo = $('.logo');
     if (!logo) return;
 
-    let clickCount = 0;
-    let clickTimer = null;
-
     logo.addEventListener('click', (e) => {
-      clickCount++;
+      // Trigger the secret admin gateway on a single click
+      e.preventDefault();
+      e.stopPropagation();
       
-      if (clickCount >= 3) {
-        // Trigger the secret admin gateway on triple click
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const adminModal = $('#modal-admin');
-        if (adminModal) {
-          adminModal.classList.add('open');
-          document.body.style.overflow = 'hidden';
-          setTimeout(() => {
-            const input = $('#a-username');
-            if (input) input.focus();
-          }, 450);
-        }
-        
-        // Reset
-        clickCount = 0;
-        clearTimeout(clickTimer);
-      } else {
-        // Normal click behavior (navigate to home) is allowed to pass through
-        // unless it reaches 3 clicks within 500ms
-        clearTimeout(clickTimer);
-        clickTimer = setTimeout(() => {
-          clickCount = 0;
-        }, 500);
+      const adminModal = $('#modal-admin');
+      if (adminModal) {
+        adminModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+          const input = $('#a-username');
+          if (input) input.focus();
+        }, 450);
       }
     });
 

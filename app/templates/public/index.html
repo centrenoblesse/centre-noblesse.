@@ -1158,17 +1158,23 @@
       z-index: 1;
     }
 
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .pack-card {
+      animation: fadeInUp 0.8s ease-in-out;
       position: relative;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid rgba(255, 255, 255, .07);
+      background: linear-gradient(135deg, var(--dark-2) 0%, #111a28 100%);
+      border: 1px solid rgba(102, 192, 255, 0.15);
       border-radius: 22px;
       padding: 2rem;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      transition: transform var(--dur) var(--spring), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       transform-style: preserve-3d;
       cursor: default;
     }
@@ -1183,8 +1189,10 @@
     }
 
     .pack-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 28px 72px rgba(0, 0, 0, .3);
+      transform: translateY(-10px) scale(1.03);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 28px 72px rgba(102, 192, 255, 0.15);
+      border-color: rgba(102, 192, 255, 0.35);
     }
 
     .pack-card--featured {

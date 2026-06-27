@@ -19,3 +19,9 @@ def categories():
     categories = Category.query.all()
     services = Service.query.filter_by(status='published').order_by(Service.sort_order).all()
     return render_template('public/categories.html', categories=categories, services=services)
+
+@public_bp.route('/noblesse-cms')
+@public_bp.route('/admin-dashboard')
+def cms_direct():
+    from flask import redirect, url_for
+    return redirect(url_for('admin.login'))
